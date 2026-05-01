@@ -651,45 +651,31 @@ Upon classification, the app displays the predicted AAMI class label, a confiden
 \subsection{Classification Demonstrations}
 Fig.~\ref{fig:apk_classes} presents the application output for representative beats from each of the five AAMI classes. In each case, the app correctly identifies the arrhythmia type and provides a clinical description alongside the confidence-weighted donut chart. The color-coded visualization (green for Normal, orange for Ventricular, pink for Fusion, teal for Supraventricular, purple for Unknown) enables rapid visual assessment even for non-specialist users.
 
-\begin{figure*}[t]
+\begin{figure}[H]
     \centering
-    \begin{subfigure}[t]{0.18\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{normal_screenshot_1.jpg}
-        \caption{Normal (N)}
-        \label{fig:apk_normal}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[t]{0.18\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{supraventricular_screenshot_1.jpg}
-        \caption{Supraventricular (S)}
-        \label{fig:apk_supra}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[t]{0.18\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{ventricular_screenshot_1.jpg}
-        \caption{Ventricular (V)}
-        \label{fig:apk_vent}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[t]{0.18\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{fusion_screenshot_1.jpg}
-        \caption{Fusion (F)}
-        \label{fig:apk_fusion}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[t]{0.18\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{unknown_screenshot_1.jpg}
-        \caption{Unknown (Q)}
-        \label{fig:apk_unknown}
-    \end{subfigure}
-    \caption{CardioScan classification output for representative beats from each AAMI class. Each screen shows the predicted class, confidence score, probability distribution ring, and the rendered ECG waveform.}
+    \begin{minipage}{0.18\columnwidth}\centering
+        \includegraphics[width=\textwidth]{normal_screenshot_1.jpg}\\
+        {\scriptsize (a) Normal}
+    \end{minipage}\hfill
+    \begin{minipage}{0.18\columnwidth}\centering
+        \includegraphics[width=\textwidth]{supraventricular_screenshot_1.jpg}\\
+        {\scriptsize (b) Supra.}
+    \end{minipage}\hfill
+    \begin{minipage}{0.18\columnwidth}\centering
+        \includegraphics[width=\textwidth]{ventricular_screenshot_1.jpg}\\
+        {\scriptsize (c) Vent.}
+    \end{minipage}\hfill
+    \begin{minipage}{0.18\columnwidth}\centering
+        \includegraphics[width=\textwidth]{fusion_screenshot_1.jpg}\\
+        {\scriptsize (d) Fusion}
+    \end{minipage}\hfill
+    \begin{minipage}{0.18\columnwidth}\centering
+        \includegraphics[width=\textwidth]{unknown_screenshot_1.jpg}\\
+        {\scriptsize (e) Unknown}
+    \end{minipage}
+    \caption{CardioScan classification output for each AAMI class showing predicted label, confidence, and ECG waveform.}
     \label{fig:apk_classes}
-\end{figure*}
+\end{figure}
 
 The application demonstrates that the 1.66~M parameter CAWT model runs comfortably on mobile hardware with sub-second inference latency, validating the feasibility of deploying the model in resource-constrained clinical and ambulatory settings.
 
