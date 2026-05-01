@@ -681,7 +681,27 @@ To illustrate the on-device inference pipeline, two representative cases are exa
     \label{fig:apk_fusion_prob}
 \end{figure}
 
-The contrast between these two cases highlights an important property of the deployed model: even for the most challenging class in the dataset, the on-device inference produces a correct prediction with interpretable confidence scores. The remaining three classes---Supraventricular~(S), Ventricular~(V), and Unknown~(Q)---were also tested using their respective sample beats and were correctly identified by the application in each case, consistent with the per-class recall figures reported in Table~\ref{tab:perclass}. The 1.66~M parameter CAWT model runs with sub-second inference latency on commodity smartphone hardware, validating the feasibility of deploying the model in resource-constrained clinical and ambulatory settings.
+The contrast between these two cases highlights an important property of the deployed model: even for the most challenging class in the dataset, the on-device inference produces a correct prediction with interpretable confidence scores. The remaining three classes---Supraventricular~(S), Ventricular~(V), and Unknown~(Q)---were also tested using their respective sample beats and were correctly identified by the application in each case (Fig.~\ref{fig:apk_other}), consistent with the per-class recall figures reported in Table~\ref{tab:perclass}.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.30\columnwidth}\centering
+        \includegraphics[width=0.9\textwidth]{supraventricular_screenshot_1.jpg}\\
+        {\scriptsize (a) Supraventricular (S)}
+    \end{minipage}\hfill
+    \begin{minipage}{0.30\columnwidth}\centering
+        \includegraphics[width=0.9\textwidth]{ventricular_screenshot_1.jpg}\\
+        {\scriptsize (b) Ventricular (V)}
+    \end{minipage}\hfill
+    \begin{minipage}{0.30\columnwidth}\centering
+        \includegraphics[width=0.9\textwidth]{unknown_screenshot_1.jpg}\\
+        {\scriptsize (c) Unknown (Q)}
+    \end{minipage}
+    \caption{CardioScan classification output for the remaining three AAMI classes, each correctly identified by the deployed model.}
+    \label{fig:apk_other}
+\end{figure}
+
+The 1.66~M parameter CAWT model runs with sub-second inference latency on commodity smartphone hardware, validating the feasibility of deploying the model in resource-constrained clinical and ambulatory settings.
 
 % ============================================================================
 % VI. CONCLUSION
