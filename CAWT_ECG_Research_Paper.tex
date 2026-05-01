@@ -649,35 +649,39 @@ Upon classification, the app displays the predicted AAMI class label, a confiden
 \end{figure}
 
 \subsection{Classification Demonstrations}
-Fig.~\ref{fig:apk_classes} presents the application output for representative beats from each of the five AAMI classes. In each case, the app correctly identifies the arrhythmia type and provides a clinical description alongside the confidence-weighted donut chart. The color-coded visualization (green for Normal, orange for Ventricular, pink for Fusion, teal for Supraventricular, purple for Unknown) enables rapid visual assessment even for non-specialist users.
+To illustrate the on-device inference pipeline, two representative cases are examined: a Normal beat (class~N) and a Fusion beat (class~F). These two classes were chosen because they represent the easiest and hardest classification scenarios respectively, as established in the confusion matrix analysis (Section~IV-B).
+
+\textbf{Normal beat classification.} Fig.~\ref{fig:apk_normal_ring} shows the classification ring for a Normal sinus rhythm beat. The donut chart is dominated by green, and the app assigns the correct label with a top-class probability of 67\%. The full probability breakdown (Fig.~\ref{fig:apk_normal_prob}) shows that the remaining probability mass is distributed nearly uniformly across the other four classes (S: 8\%, V: 7\%, F: 8\%, Q: 8\%), indicating that the model is confident in its prediction with no competing hypothesis. The rendered ECG waveform displays a clean QRS complex with a well-defined R-peak, consistent with normal sinus morphology.
 
 \begin{figure}[H]
     \centering
-    \begin{minipage}{0.18\columnwidth}\centering
-        \includegraphics[width=\textwidth]{normal_screenshot_1.jpg}\\
-        {\scriptsize (a) Normal}
+    \begin{minipage}{0.48\columnwidth}\centering
+        \includegraphics[width=0.85\textwidth]{normal_screenshot_1.jpg}
     \end{minipage}\hfill
-    \begin{minipage}{0.18\columnwidth}\centering
-        \includegraphics[width=\textwidth]{supraventricular_screenshot_1.jpg}\\
-        {\scriptsize (b) Supra.}
-    \end{minipage}\hfill
-    \begin{minipage}{0.18\columnwidth}\centering
-        \includegraphics[width=\textwidth]{ventricular_screenshot_1.jpg}\\
-        {\scriptsize (c) Vent.}
-    \end{minipage}\hfill
-    \begin{minipage}{0.18\columnwidth}\centering
-        \includegraphics[width=\textwidth]{fusion_screenshot_1.jpg}\\
-        {\scriptsize (d) Fusion}
-    \end{minipage}\hfill
-    \begin{minipage}{0.18\columnwidth}\centering
-        \includegraphics[width=\textwidth]{unknown_screenshot_1.jpg}\\
-        {\scriptsize (e) Unknown}
+    \begin{minipage}{0.48\columnwidth}\centering
+        \includegraphics[width=0.85\textwidth]{normal_screenshot_2.jpg}
     \end{minipage}
-    \caption{CardioScan classification output for each AAMI class showing predicted label, confidence, and ECG waveform.}
-    \label{fig:apk_classes}
+    \caption{Normal beat: (left) classification ring showing dominant N prediction, (right) class probability distribution with 67\% confidence for Normal.}
+    \label{fig:apk_normal_ring}
+    \label{fig:apk_normal_prob}
 \end{figure}
 
-The application demonstrates that the 1.66~M parameter CAWT model runs comfortably on mobile hardware with sub-second inference latency, validating the feasibility of deploying the model in resource-constrained clinical and ambulatory settings.
+\textbf{Fusion beat classification.} Fig.~\ref{fig:apk_fusion_ring} shows the classification output for a Fusion beat. Fusion beats are inherently ambiguous because they arise from the simultaneous activation of a normal sinus impulse and a ventricular ectopic focus, producing a waveform that blends characteristics of both. The model correctly identifies the beat as class~F with 65\% confidence. The probability breakdown (Fig.~\ref{fig:apk_fusion_prob}) reveals that Ventricular (V) receives the second-highest probability at 11\%, reflecting the morphological overlap between fusion and ventricular complexes. This leakage pattern is consistent with the off-diagonal errors observed in the confusion matrix (Fig.~\ref{fig:confusion}), where class~F is most frequently misclassified as N (7\%) and V (4\%). The remaining classes (N: 7\%, S: 7\%, Q: 7\%) share the residual probability mass roughly equally.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\columnwidth}\centering
+        \includegraphics[width=0.85\textwidth]{fusion_screenshot_1.jpg}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\columnwidth}\centering
+        \includegraphics[width=0.85\textwidth]{fusion_screenshot_2.jpg}
+    \end{minipage}
+    \caption{Fusion beat: (left) classification ring showing F prediction, (right) class probability distribution with 65\% confidence and 11\% leakage to Ventricular.}
+    \label{fig:apk_fusion_ring}
+    \label{fig:apk_fusion_prob}
+\end{figure}
+
+The contrast between these two cases highlights an important property of the deployed model: even for the most challenging class in the dataset, the on-device inference produces a correct prediction with interpretable confidence scores. The 1.66~M parameter CAWT model runs with sub-second inference latency on commodity smartphone hardware, validating the feasibility of deploying the model in resource-constrained clinical and ambulatory settings.
 
 % ============================================================================
 % VI. CONCLUSION
