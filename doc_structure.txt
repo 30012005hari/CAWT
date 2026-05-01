@@ -1,0 +1,681 @@
+[Normal] Cross-Attentive Wavelet-Transformer(CAWT) for ECG
+[Normal] Submitted in partial fulfilment for the award of the degree in
+[Normal] BACHELOR OF TECHNOLOGY
+[Normal] In
+[Normal] ELECTRONICS AND COMMUNICATION ENGINEERING
+[Normal] Submitted by
+[Normal] M. P. Hari Chandra(22331A04A8)
+[Normal] K.Varshini (22331A0484)
+[Normal] L.P.Harshita(22331A0496)
+[Normal] K. Raj Samuel (22331A0485)
+[Normal] Under the guidance of
+[Normal] Dr. M. Lakshmi Prasanna Rani, M. Tech, Ph.D.
+[Normal] Associate Professor
+[Normal] DEPARTMENT OF ELECTRONICS AND COMMUNICATION ENGINEERING MAHARAJ VIJAYARAM GAJAPATHI RAJ COLLEGE OF ENGINEERING (A)
+[Normal] Approved by AICTE, New Delhi Permanently Affiliated to JNTU, Gurajada, Vizianagaram. Re-Accredited by NBA and NAAC ‘A ’grade, listed u/s 2(f)and 12(B) of the UGC Act 1956 Vijayaram Nagar Campus, Vizianagaram, Andhra Pradesh-535005.
+[Normal] 2024-2025
+[Normal] DEPARTMENT OF ELECTRONICS AND COMMUNICATION ENGINEERING
+[Normal] MAHARAJ VIJAYARAM GAJAPATHI RAJ COLLEGE OF ENGINEERING (A)
+[Heading 1] CERTIFICATE
+[Normal] This is to certify that the project entitled “Cross-Attentive Wavelet-Transformer(CAWT) for ECG ” being submitted by M. P.Hari Chandra (22331A04A8), K.Varshini (22331A0484), L.P.Harshitha (22331A0496), K.Raj Samuel ( 22331A0485 ) in partial fulfilment of the requirements for the award of the Degree of Bachelor of Technology in Electronics and Communication Engineering is a record of  Bonafide work done by them under my supervision during the academic year 2025 - 2026.
+[Normal] PROJECT GUIDE                                                         HEAD OF THE DEPARTMENT
+[Normal] Dr. M. Lakshmi Prasanna Rani                                    Dr.D.Rama Devi
+[Normal] M.Tech, Ph.D.                                                                  M.Tech,Ph.D
+[Normal] Associate Professor                                                         Professor & HOD
+[Normal] Department of E.C.E                                                       Department of E.C.E
+[Normal] M.V.G.R College of Engineering (A)                       M.V.G.R College of Engineering (A)  Vizianagaram.                                                                  Vizianagaram.
+[Normal] EXTERNAL EXAMINER
+[Normal] DEPARTMENT OF ELECTRONICS AND COMMUNICATION ENGINEERING
+[Normal] MAHARAJ VIJAYARAM GAJAPATHI RAJ COLLEGE OF ENGINEERING (A)
+[Heading 2] SELF DECLARATION
+[Normal] We hereby declare that this project work entitled “Cross-Attentive Wavelet-Transformer (CAWT) for ECG” has been prepared by us during the year 2025-2026 under the guidance of Dr. M. Lakshmi Prasanna Rani, Associate Professor in Maharaj Vijayaram Gajapathi Raj College of Engineering(A) in the partial fulfilment of B. Tech degree prescribed by the college.
+[Normal] We also declare that this project is the outcome of my own effort, that it has not been submitted to any other university for the award of any degree.
+[Normal] M. P. HARI CHANDRA			                          K.VARSHINI
+[Normal] (22331A04A8)         				(22331A0484)
+[Normal] L.P.HARSHITA                                                                     K. RAJ SAMUEL
+[Normal] (22331A0496)                                                                       (22331A0485)
+[Heading 1] ACKNOWLEDGEMENT
+[Normal] With reverence and humility, we wish to express our deep sense of gratitude to Dr. M. Lakshmi Prasanna Rani, Associate Professor, E.C.E Department, for her wholehearted cooperation, unfailing inspiration and benevolent guidance. Throughout the project work, her useful suggestions and constant encouragement have given the right direction and shape to our learning. Really, we are indebted to her excellent and enlightened guidance.
+[Normal] We consider it our privilege to express our deepest gratitude to Dr. D.Rama Devi Professor and Head of the Department, E.C.E, for his valuable suggestions and constant motivation that greatly helped the project work to get successfully completed.
+[Normal] We thank Dr. P. S. Sitharama Raju Director, for extending his utmost support and cooperation in providing all the provisions for the successful completion of the project.
+[Normal] We thank Dr. Y.M.C. Sekhar, Principal, for extending his utmost support and cooperation in providing all the provisions for the successful completion of the project.
+[Normal] We sincerely thank to all the members of the teaching and non-teaching staff of the department of Electronics and Communication Engineering for their sustained help in our pursuits.
+[Normal] With great solemnity and sincerity, we offer our profuse thanks to our management, MANSAS, for providing all the resources for completing our project successfully.
+[Normal] We thank all those who contributed directly or indirectly to successfully carrying out this work.
+[Normal] M.P. Hari Chandra(22331A04A8)
+[Normal] K. Varshini (22331A0484)
+[Normal] L.P. Harshita (22331A0496)
+[Normal] K. Raj Samuel (22331A0485)
+[Normal] Mission and Vision of the Institute and Department
+[Normal] PROGRAMME SPECIFIC OUTCOMES:
+[Normal] PSO1: An ability to design and implement complex systems in the areas related to Analog and Digital Electronics, Communication, Signal processing, RF & Microwave, VLSI and Embedded systems.
+[Normal] PSO2: Ability to make use of acquired knowledge to be employable and demonstrate leadership and entrepreneurial skills.
+[Normal] PROGRAM OUTCOMES (POs):
+[Normal] Engineering Graduates will be able to:
+[Normal] Engineering knowledge: Apply the knowledge of mathematics, science, engineering fundamentals, and engineering specialization to the solution of complex engineering problems.
+[Normal] Problem analysis: Identify, formulate, review research literature, and analyses complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences.
+[Normal] Design/development of solutions: Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for the public health and safety, and the cultural, societal, and environmental considerations.
+[Normal] Conduct investigation of complex problems: Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions.
+[Normal] Modern tool usage: Create, select, and apply appropriate techniques, resources, and modern engineering and IT tools including prediction and modelling to complex engineering activities with an understanding of the limitations.
+[Normal] The engineer and society: Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice.
+[Normal] Environment and sustainability: Understand the impact of professional engineering solutions in societal and environmental contexts and demonstrate the knowledge of and need for sustainable development.
+[Normal] Ethics: Apply ethical principles and commitment to professional ethics and responsibilities and norms of engineering practice.
+[Normal] Individual and team work: Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings.
+[Normal] Communication: Communicate effectively on complex engineering activities with the engineering community and with society at large, such as, being able to comprehend and write effective reports and design documentation, making effective presentations, and give and receive clear instructions.
+[Normal] Project management and finance: Demonstrate knowledge and understanding of the engineering and management principles and apply these to one ‘s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments.
+[Normal] Life-long learning: Recognize the need for and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change.
+[Normal] PROJECT WORK:
+[Normal] PROJECT OUTCOMES MAPPING WITH POS
+[Normal] PROJECT OUTCOMES AND PO MAPPING
+[Heading 1] ABSTRACT
+[Normal] Cardiovascular diseases (CVDs) remain one of the leading causes of death worldwide, with arrhythmias being a significant contributing factor. Accurate and efficient detection of arrhythmias is crucial for timely diagnosis and treatment. The electrocardiogram (ECG) is a vital diagnostic tool for monitoring heart conditions, but manual ECG interpretation can be labour-intensive and prone to errors.
+[Normal] To address this, we initially employed various machine learning models to classify ECG signals, assessing their performance based on accuracy. Based on the highest-performing model, we then developed ensemble models, combining it with other classifiers to further enhance performance. While ensemble methods improved classification accuracy, the need for better generalization and feature extraction motivated the development of a more advanced deep learning approach.
+[Normal] This project proposes a cross-optimized hybrid deep learning framework for ECG signal classification that moves beyond the conventional serial hybrid design. Instead of feeding final outputs from one model into another, the proposed method enables mutual parameter exchange, where intermediate features extracted by Model A are shared with Model B, and vice versa, allowing joint optimization.
+[Normal] By leveraging both temporal (time-domain morphology) and spectral (frequency-domain dynamics) representations of ECG signals, this framework aims to capture a richer set of discriminative features while minimizing overfitting. The system will be implemented on publicly available ECG datasets in Google Co-lab, validated against standard arrhythmia classification benchmarks, and evaluated using accuracy, sensitivity, specificity, and F1-score.
+[Normal] CONTENTS
+[Normal] CERTIFICATE                                                                                           II
+[Normal] SELF DECLARATION                                                                             III
+[Normal] ACKNOWLEDGEMENTS                                                                       IV
+[Normal] MISSION AND VISION OF THE INSTITUTE                                       V
+[Normal] PROGRAM OUTCOMES(POS)                                                              VI
+[Normal] PROJECT OUTCOMES                                                                           VII
+[Normal] PROJECT OUTCOMES AND PO MAPPING                                        VIII
+[Normal] ABSTRACT                                                                                               IX
+[Normal] CONTENTS                                                                                               X
+[Normal] LIST OF FIGURES                                                                                   XIII
+[Normal] LIST OF TABLES                                                                                      XV
+[Normal] CHAPTER 1: INTRODUCTION                                                             1
+[List Paragraph] Introduction to Heart Diseases                                                         2
+[List Paragraph] Electrocardiogram                                                                            5
+[Normal] CHAPTER 2: LITERATURE SURVEY                                                  9
+[Normal] CHAPTER 3: MACHINE LEARNING TECHNIQUES                       14
+[List Paragraph] 3.1 Introduction to Machine Learning                                                    15
+[List Paragraph] 3.1.1 Importance of Machine Learning                                            15
+[Normal] 3.1.2 Machine Learning Working                                                     16
+[Normal] 3.1.3 Types of Machine Learning                                                     18
+[Normal] 3.1.4 Applications for Machine Learning                                         20
+[Normal] 3.2 Machine Learning Techniques                                                           21
+[Normal] 3.2.1 KNN Algorithm                                                                        21
+[Normal] 3.2.2 Decision Tree                                                                            21
+[Normal] 3.2.3 Random Forest                                                                            22
+[Normal] 3.2.4 SVM                                                                                            23
+[Normal] 3.2.5 XGBOOST                                                                                  23
+[Normal] 3.3 Ensemble Learning                                                                              24
+[Normal] 3.3.1 Majority                                                                                     25
+[Normal] 3.3.2 Average                                                                                      26
+[Normal] 3.3.3 Stacking                                                                                     26
+[Normal] 3.3.4 Bagging                                                                                     27
+[Normal] 3.3.5 Boosting                                                                                    28
+[Normal] CHAPTER 4: DEEP LEARNING TECHNIQUES                                   29
+[Normal] 4.1 Introduction to Deep Learning                                                            30
+[Normal] 4.1.1 Convolution Neural Networks                                                  31
+[Normal] 4.1.2 Advantages of CNN                                                                  32
+[Normal] 4.2 Attention Mechanism	                                                                        32
+[Normal] 4.2.1 Working of Attention Mechanism                                            34
+[Normal] 4.2.2 Advantages of Attention Mechanism                                        35
+[Normal] 4.2.3 Applications of Attention Mechanism                                      36
+[Normal] 4.3 Transformer Network                                                                        37
+[Normal] 4.3.1 Working of Transformer Network                                            37
+[Normal] 4.3.2 Advantages of Transformer Network	                                   38
+[Normal] 4.3.3 Applications for Transformer Network	                                   38
+[Normal] CHAPTER 5: METHODOLOGY                                                             39
+[Normal] 5.1 ECG Database                                                                                   40
+[Normal] 5.2 Preprocessing                                                                                    41
+[Normal] 5.3 Feature Extraction                                                                                  43
+[Normal] 5.4 Balancing Dataset                                                                                   43
+[Normal] 5.5 Feature Selection                                                                                    44
+[Normal] 5.6 Classification                                                                                          46
+[Normal] 5.7 Evaluation Metrics for Arrhythmia Classification                                 49
+[Normal] CHAPTER 6: SOFTWARE                                                                            51
+[Normal] 6.1 Google Collaboratory                                                                            52
+[Normal] 6.2 Software Libraries                                                                                 52                        	6.2.1 Numpy	                                                                                       52		6.2.2 Panda	                                                                                       53
+[Normal] 6.2.3 Keras					                                       53
+[Normal] 6.3 Layers’ Implementation Using Deep Learning                                     54
+[Normal] CHAPTER 7: RESULTS AND DISCUSSION                                             55
+[Normal] 7.1 Arrhythmia Classification Using ML Models                                      56
+[Normal] 7.2 Arrhythmia Classification Using Ensemble Models                            59
+[Normal] 7.3 Arrhythmia Classification Using CATBoost Model                             62           CHAPTER 8: CONCLUSION                                                                       68
+[Normal] 8.1 Conclusion                                                                                           69
+[Normal] 8.2 	Future Scope                                                                                        69
+[Normal] CHAPTER 9: REFERENCES                                                                       70
+[Normal] LIST OF FIGURES
+[Caption] Fig 1.1 Types of heart diseases                                                                           3
+[Caption] Fig 1.2  ECG components P wave, QRS complex and T wave                          6
+[Caption] Fig. 3.1 Flow chart showing steps in implementing ML Algorithms                 17
+[Caption] Fig. 3.2 Types of Machine Learning                                                                   18
+[Caption] Fig. 3.3 KNN Algorithm                                                                                     21
+[Caption] Fig. 3.4 Decision Tree Algorithm                                                                       22
+[Caption] Fig. 3.5 Random Forest Algorithm                                                                     23
+[Caption] Fig. 3.6 Support Vector Machine (SVM)                                                            23
+[Caption] Fig. 3.7 Gradient Boosting                                                                                  24
+[Caption] Fig. 3.8 Ensemble Learning                                                                                25
+[Caption] Fig. 3.9 Majority Ensemble Learning                                                                 25
+[Caption] Fig. 3.10 Average Ensemble Learning                                                                26
+[Caption] Fig.3.11 Stacking Ensemble Learning                                                                27
+[Caption] Fig. 3.12 Bagging Ensemble Learning                                                               27
+[Caption] Fig. 3.13 Boosting Ensemble Learning                                                              28
+[Caption] Fig 4.1: Block Diagram                                                                                      31
+[Caption] Fig 4.2 Convolutional Neural Network                                                              32
+[Caption] Fig 4.3 Attention Mechanism                                                                             33
+[Normal] Fig 4.4 Transformer Network                                                                             37
+[Caption] Fig 5.1 Sample ECG Signal Types Representing AAMI Standard                     41
+[Caption] Heartbeat Classes
+[Normal] Fig 5.2 Raw ECG Signal with Noise, Denoised ECG Signal & Segmentation 43
+[Normal] using R-Peak Detection
+[Normal] Fig 5.3 Classification Workflow Using ML Models                                          46
+[Normal] Fig 5.4 Classification Workflow Using Ensemble Models                                47
+[Normal] Fig 5.5 Classification Workflow Using CAT Network                                      48
+[Normal] Fig 5.6 CAT-Net Architecture                                                                            49
+[Caption] Fig 7.1 Comparative Analysis of ML Models                                                   58
+[Normal] Fig 7.2 Performance Trends Across ML Models                                               59
+[Caption] Fig 7.3 Metric Distribution Across ML Models                                                59
+[Caption] Fig 7.4 Comparative Analysis of Ensemble Models                                         61
+[Caption] Fig 7.5 Performance Trends Across Ensemble Models                                    61
+[Caption] Fig 7.6 Metric Distribution Across Ensemble Models                                     62
+[Caption] Fig 7.7 Model Summary of the proposed CAT Network                                 63
+[Normal] Fig 7.8 Confusion Matrix for CAT Network                                                   64
+[Normal] Fig 7.9 Classification Report for CAT Network                                              65
+[Caption] Fig 7.10 Accuracy Curve for CAT Network                                                    65
+[Caption] Fig 7.11 Loss Curve for CAT Network                                                           66
+[Normal] Fig 7.12 ROC Curve                                                                                       66
+[Normal] LIST OF TABLES
+[Normal] Table 1 Distribution of ECG records for different arrhythmia                            41
+[Normal] Table 2 Performance Comparison of ML Models                                               57
+[Normal] Table 3 Performance Comparison of Ensemble Models                                     60
+[Normal] Table 4 Performance Comparison of CAT Boost Model                                    63
+[Normal] Table 5 Overall Performance Comparison                                                          67
+[Normal] CHAPTER 1
+[Normal] INTRODUCTION
+[Normal] CHAPTER 1
+[Normal] INTRODUCTION
+[Normal] 1.1 Introduction to Heart Diseases
+[Normal] Heart disease, also known as cardiovascular disease, refers to a group of conditions that affect the structure and function of the heart and blood vessels. It encompasses a wide range of disorders, including coronary artery disease, heart failure, arrhythmias, valvular heart disease, and congenital heart defects, among others. Heart disease is a leading cause of morbidity and mortality globally, posing a significant public health challenge.
+[Normal] Cardiovascular diseases (CVDs) are a group of disorders that affect the heart and blood vessels, often leading to serious complications such as heart attacks, strokes, and peripheral artery disease. These conditions are among the leading causes of mortality worldwide, posing a significant public health challenge that encompass a range of disorders, including coronary artery disease, hypertension (high blood pressure), heart failure, arrhythmia (irregular heartbeats), and peripheral vascular disease. They can develop due to various factors, including genetics, lifestyle choices, and underlying medical conditions. One of the primary contributors to CVDs is atherosclerosis, a condition characterized by the buildup of plague within the arteries, restricts blood flow, and can eventually lead to complications such as heart attacks and strokes.
+[Normal] Risk factors for cardiovascular diseases include smoking, poor diet, lack of physical activity, obesity, high blood pressure, diabetes, and high cholesterol levels. Additionally, factors such as age, gender, and family history can influence an individual's susceptibility to developing CVDs.The prevention and management of cardiovascular diseases often involve lifestyle modifications such as maintaining a healthy diet, regular exercise, avoiding tobacco use, managing stress, and controlling underlying medical conditions. Medications may also be prescribed to control risk factors such as hypertension, high cholesterol, and diabetes.
+[Normal] Early detection and timely intervention are crucial in mitigating the impact of CVDs. Regular screenings, such as blood pressure checks and cholesterol tests, can help identify risk factors and allow for appropriate management strategies to be implemented. Overall, addressing cardiovascular diseases requires a comprehensive approach that involves both individual lifestyle changes and broader public health initiatives aimed at raising awareness, promoting healthy behaviors, and improving access to healthcare services. By prioritizing prevention and early intervention, the burden of CVDs can be significantly reduced, leading to improved health outcomes and quality of life for individuals worldwide.
+[Normal] Types of Heart diseases:
+[Caption] Fig 1.1 Types of heart diseases
+[Normal] Fig 1.1 shows various types of heart diseases, coronary artery disease (CAD): CAD is the most common type of heart disease and occurs when the coronary arteries, which supply oxygen-rich blood to the heart muscle, become narrowed or blocked by a buildup of plaque (atherosclerosis). This restricts blood flow to the heart, leading to chest pain (angina), heart attacks (myocardial infarctions), and potentially fatal complications. It is the damage or disease in the heart’s major blood vessels. The usual cause is the buildup of plaque. This causes coronary arteries to narrow, limiting blood flow to the heart. Stroke is the Damage to the brain from interruption of its blood supply.
+[Normal] Heart Failure: Heart failure occurs when the heart is unable to pump blood effectively to meet the body's demands. It can result from various underlying conditions, such as CAD, hypertension, diabetes, or damage to the heart muscle (cardiomyopathy). Symptoms of heart failure include shortness of breath, fatigue, swelling of the legs and ankles, and difficulty performing daily activities.
+[Normal] Arrhythmias: Arrhythmias are abnormal heart rhythms that occur when the electrical impulses that coordinate heartbeats are disrupted. This can cause the heart to beat too fast (tachycardia), too slow (bradycardia), or irregularly. Arrhythmias can lead to palpitations, dizziness, fainting, and in severe cases, cardiac arrest.
+[Normal] Valvular Heart Disease: Valvular heart disease involves abnormalities or damage to the heart valves, which regulate blood flow within the heart chambers. This can result in valve stenosis (narrowing) or regurgitation (leakage), impairing the heart's ability to pump blood efficiently and causing symptoms such as chest pain, fatigue, and shortness of breath.
+[Normal] Congenital Heart Defects: Congenital heart defects are structural abnormalities of the heart that are present at birth. These defects can affect the heart chambers, valves, or major blood vessels, leading to disturbances in blood flow and oxygen delivery. Depending on the severity and type of defect, individuals may experience a range of symptoms from mild to life-threatening.
+[Normal] Importance of early detection and diagnosis of heart disease
+[Normal] Heart disease remains one of the leading causes of morbidity and mortality worldwide, imposing a significant burden on healthcare systems and individuals alike. With its diverse manifestations and potentially fatal consequences, the importance of early detection and diagnosis of heart disease cannot be overstated. Timely identification of cardiac abnormalities enables healthcare providers to initiate appropriate interventions, mitigate risks, and improve patient outcomes.
+[Normal] Early detection plays a pivotal role in preventing the progression of heart disease and reducing associated complications.
+[Normal] Many cardiovascular conditions, including coronary artery disease, arrhythmia, and heart failure, often develop gradually over time, with subtle or asymptomatic presentations in the early stages. As a result, individuals may remain unaware of their underlying cardiac issues until they experience severe symptoms or adverse events. By implementing screening programs and diagnostic protocols that target high-risk populations or individuals with predisposing factors, healthcare providers can identify cardiac abnormalities at an early stage, facilitating prompt intervention and management.
+[Normal] Furthermore, early diagnosis of heart disease offers opportunities for preventive strategies and lifestyle modifications that can mitigate risk factors and improve cardiovascular health. Lifestyle factors such as diet, physical activity, and smoking habits significantly influence the development and progression of heart disease. By identifying individuals at risk and providing education, counseling, and support for adopting healthier behaviors, healthcare providers can empower patients to take proactive steps towards reducing their cardiovascular risk and optimizing their overall well-being.
+[Normal] In addition to its clinical implications, early detection of heart disease carries significant socioeconomic benefits. The economic burden associated with managing advanced stages of heart disease, including hospitalizations, surgeries, and long-term care, can be substantial. By detecting cardiac abnormalities early in the disease course and implementing preventive measures, healthcare systems can reduce healthcare expenditures, improve resource allocation, and enhance the quality-of-care delivery.
+[Normal] The importance of early detection and diagnosis of heart disease lies not only in its potential to improve individual health outcomes but also in its broader impact on healthcare systems and society. Through proactive screening, timely intervention, and preventive strategies, we can strive towards reducing the global burden of heart disease and promoting cardiovascular health for all.
+[Normal] 1.2 Electrocardiogram
+[Normal] An electrocardiogram (ECG or EKG) is a diagnostic test that records the electrical activity of the heart over a period of time. This non-invasive procedure is commonly used to evaluate the heart's rhythm and electrical conduction, helping healthcare providers assess cardiac health and detect various abnormalities.
+[Normal] During an ECG, electrodes are placed on specific locations on the skin, typically on the chest, arms, and legs. These electrodes detect the electrical signals generated by the heart as it contracts and relaxes. The signals are then amplified and recorded by the ECG machine, producing a visual representation of the heart's electrical activity known as an electrocardiogram. The ECG waveform consists of several components, including the P wave, QRS complex, and T wave. The Fig 1.2 shows ECG components P wave, QRS complex and T wave. Each component corresponds to a specific phase of the cardiac cycle: P wave: Represents the depolarization (contraction) of the atria, or upper chambers of the heart. QRS complex: Reflects the depolarization of the ventricles, or lower chambers of the heart, as well as the contraction of the ventricles.
+[Normal] T wave: Indicates the repolarization (relaxation) of the ventricles, preparing them for the next heartbeat.
+[Normal] Arrhythmias: Irregular heart rhythms, such as atrial fibrillation and ventricular tachycardia.
+[Normal] Myocardial infarction (heart attack): Characterized by specific changes in the ECG pattern, such as ST-segment elevation or Q-wave formation.
+[Normal] Cardiac ischemia: Reduced blood flow to the heart muscle, often indicated by ST-segment depression or T-wave inversion.
+[Normal] Cardiac hypertrophy: Enlargement of the heart chambers, resulting in changes to the ECG waveform.ECGs are valuable tools in diagnosing and monitoring various cardiovascular conditions. They are routinely used in clinical settings, including hospitals, clinics, and emergency departments. ECGs can provide valuable information quickly and efficiently, aiding healthcare providers in making timely and accurate decisions regarding patient care and treatment.
+[Caption] Fig 1.2 ECG components P wave, QRS complex and T wave
+[Normal] Beat Classification:
+[Normal] Beat classification, also known as heartbeat classification or cardiac rhythm classification, is a process of categorizing individual heartbeats into different classes based on their characteristics. This classification is essential in analyzing electrocardiogram (ECG) signals, which record the electrical activity of the heart over time. Beat classification plays a crucial role in various medical applications, including the detection and diagnosis of cardiac arrhythmias, monitoring patient health, and guiding treatment decisions.
+[Normal] Beat classification involves several steps:
+[Normal] Signal Preprocessing: ECG signals are preprocessed to remove noise, baseline wander, and artifacts that may interfere with accurate beat detection and classification.
+[Normal] Feature Extraction: Relevant features are extracted from each heartbeat, such as amplitude, duration, morphology, and intervals (e.g., P-QRS-T intervals).
+[Normal] Classification: Machine learning algorithms or pattern recognition techniques are applied to classify heartbeats into different categories based on extracted features. Common classification approaches include rule-based algorithms, template matching, support vector machines (SVM), artificial neural networks (ANN), and convolutional neural networks (CNN).
+[Normal] Beat Types:
+[Normal] Normal Beats: Normal beats, also known as sinus beats, represent the typical rhythmic contractions of the heart generated by the sinoatrial (SA) node. These beats exhibit regular morphology and timing, characterized by a consistent sequence of P waves, QRS complexes, and T waves on the electrocardiogram (ECG). Normal beats indicate a healthy sinus rhythm and are essential for maintaining efficient cardiac function.
+[Normal] Premature Beats: Premature beats, also called ectopic beats, occur earlier than expected in the cardiac cycle and originate from ectopic foci outside the SA node. Premature beats can manifest as premature atrial contractions (PACs) or premature ventricular contractions (PVCs), depending on their site of origin. PACs arise from abnormal electrical impulses originating in the atria, resulting in premature atrial depolarization and distinctive premature P waves on the ECG. PVCs originate from the ventricles and produce premature, wide QRS complexes on the ECG. While occasional premature beats are common and may not indicate underlying pathology, frequent or sustained ectopic beats can be symptomatic and may require further evaluation.
+[Normal] Supraventricular Arrhythmias: Supraventricular arrhythmias encompass a group of abnormal heart rhythms originating above the ventricles, typically within the atria or atrioventricular (AV) node. These arrhythmias include:
+[Normal] Atrial Fibrillation (AF): AF is the most common sustained cardiac arrhythmia, characterized by rapid, irregular electrical activity in the atria, leading to disorganized atrial contractions. AF may result in palpitations, dizziness, fatigue, and an increased risk of stroke and heart failure.
+[Normal] Atrial Flutter: Atrial flutter is a rhythmic, sawtooth pattern of atrial depolarization, typically occurring at a faster rate than normal sinus rhythm. Atrial flutter may cause palpitations, shortness of breath, and hemodynamic compromise.
+[Normal] Supraventricular Tachycardia (SVT): SVT refers to a rapid heart rate originating above the ventricles, often arising from reentrant circuits within the atria or AV node. SVT can cause palpitations, chest discomfort, dizziness, and syncope.
+[Normal] Ventricular Arrhythmias: Ventricular arrhythmias arise from abnormal electrical activity originating in the ventricles, leading to irregular heart rhythms and compromised cardiac function. These arrhythmias include:
+[Normal] Ventricular Tachycardia (VT): VT is characterized by a rapid, regular or irregular heartbeat originating from the ventricles, typically with a wide QRS complex on the ECG. VT can be sustained or nonsustained and may result in hemodynamic instability and sudden cardiac arrest.
+[Normal] Ventricular Fibrillation (VF): VF is a life-threatening arrhythmia characterized by rapid, chaotic electrical activity in the ventricles, leading to ineffective ventricular contractions and loss of cardiac output. VF results in immediate loss of consciousness and requires immediate defibrillation to restore normal heart rhythm and prevent sudden cardiac death.
+[Normal] Ventricular Ectopic Beats: Ventricular ectopic beats, or premature ventricular contractions (PVCs), originate from ectopic foci within the ventricles, resulting in premature depolarization and distinctive wide QRS complexes on the ECG. Frequent PVCs may indicate underlying cardiac pathology and may warrant further evaluation.
+[Normal] CHAPTER 2
+[Normal] LITERATURE SURVEY
+[Normal] CHAPTER 2
+[Normal] LITERATURE SURVEY
+[Normal] PAPER 1
+[Normal] The study " Hybrid CNN–Transformer for Arrhythmia Kim et al., 2025, IEEE Transactions on Biomedical Engineering paper description develops a deep learning framework that combines Convolutional Neural Networks (CNNs) with Transformer architectures to classify cardiac arrhythmias from electrocardiogram (ECG) data. Unlike many classical models, this hybrid approach is designed to extract both localized signal features and long-range temporal dependencies in ECG recordings for more accurate arrhythmia detection.
+[Normal] PAPER 2
+[Normal] The study “Cardio Attention Net He et al., 2025, Nature Biomedical Engineering ,He and colleagues focused on interpretability. They introduced Cardio Attention Net with attention mechanisms that highlighted critical ECG segments during classification. This design not only improved performance but also provided transparency by showing clinicians exactly which waveform segments influenced the model's decision, making the system more trustworthy in clinical settings. It interprets the Attention mechanisms and highlight the critical ECG segments
+[Normal] PAPER 3
+[Normal] The paper titled “Hybrid CNN-GRU-Transformer by Dhara et al.,2025,Computers in Biology and Medicine” introduces The model processes ECG time-series to detect cardiovascular disease (CVD) and arrhythmia patterns with improved reliability by learning both spatial morphology and temporal rhythm changes. In experiments on the PTB-XL ECG database, the hybrid model achieved high classification performance — with reported accuracy around ~98.8%, low false-negative rates, and low false-positive rates, outperforming versions of the architecture with individual components removed (ablation study)).
+[Normal] PAPER 4
+[Normal] The study " Multi-Scale CNN–Transformer by Wei & Li, 2025, Artificial Intelligence in Medicine. Wei and Li developed a multi-scale CNN that processed ECGs at varying resolutions using kernels of different sizes. This allowed the model to detect both short, localized abnormalities and long-duration rhythm disorders. A Transformer then integrated these features into a unified sequence representation, yielding robust arrhythmia detection across multiple scales.
+[Normal] PAPER 5
+[Normal] The study “Adaptive Cross-Attention CNN–Transformer by Hu et al., 2025, Medical Image Analysis explains a cross-attention mechanism that emphasizes clinically important ECG segments while suppressing noise. CNN features are refined using Transformer-based temporal context. The adaptive attention enables accurate identification of abnormal beats, particularly in challenging cases such as atrial fibrillation, improving classification reliability.
+[Normal] PAPER 6
+[Normal] The study " CNN–Transformer + Genetic Algorithm by Krishna et al., 2024,Knowledge Based systems” this approach integrates a Genetic Algorithm with a CNN–Transformer model to automate architecture optimization. The GA evolves hyperparameters and structural configurations iteratively, reducing manual tuning effort. The result is a computationally efficient yet powerful arrhythmia detection system suitable for practical deployment.
+[Normal] PAPER 7
+[Normal] The study “ Explainable Multimodal Fusion by Oladunni & Aneni, 2025, Journal of Biomedical Informatics” this paper presents a multimodal fusion framework combining ECG, PPG, and clinical metadata using attention-based integration. The model identifies which modality contributes most to each prediction, enhancing interpretability. By leveraging multiple physiological signals, the system improves diagnostic accuracy and clinical reliability
+[Normal] PAPER 8
+[Normal] The study "Machine Learning-Based Cardiovascular Disease Detection Using Optimal Feature Selection" (IEEE, 2024) by Khalil Ullah proposes a scalable ML-based system for early CVD detection. ECG features are extracted and optimized using FCBF, MrMr, Relief, and PSO techniques. Extra Tree and Random Forest classifiers achieve 100% accuracy. The system outperforms existing methods and has the potential to improve patient care and reduce CVD-related mortality.
+[Normal] PAPER 9
+[Normal] The study "A Performance Analysis of Advanced Machine Learning Techniques for Arrhythmia Detection" (IEEE, 2023) by Akhil Mathew Philip and S. Hemalatha evaluates EPSO, ESVM, and SCNN for ECG classification. Using preprocessing, segmentation, and feature optimization, the study enhances arrhythmia detection accuracy on the MIT-BIH dataset. Accuracy and sensitivity are analyzed for performance comparison.
+[Normal] PAPER 10
+[Normal] The study "Multi-Label ECG Signal Classification Based on Ensemble Classifier" (IEEE, 2020) by Zhanquan explores multi-label ECG classification, addressing cases where a single ECG signal may indicate multiple cardiovascular diseases. A novel ensemble model combining multiple classification methods is proposed, using mutual information for weighting. The model improves overall classification performance, offering a feasible approach for automatic multi-label ECG analysis.
+[Normal] PAPER 11
+[Normal] The study "LSTM-Based ECG Classification for Continuous Monitoring on Personal Wearable Devices" (IEEE, 2020) by Saeed Saadatnejad et al. proposes a lightweight ECG classification algorithm for real-time cardiac monitoring on wearable devices. Using wavelet transform and LSTM recurrent neural networks, the method achieves superior classification accuracy while meeting timing constraints on resource-limited hardware. It enables continuous monitoring with efficient and accurate ECG classification.
+[Normal] PAPER 12
+[Normal] The study "Multi-ECGNet for ECG Arrhythmia Multi-Label Classification" (IEEE, 2020) by Junxian Cai et al. introduces Multi-ECGNet, a deep-learning-based model for multi-label ECG classification. It improves the accuracy of automatic ECG analysis by identifying multiple heart diseases simultaneously. Experimental results show a high micro-F1 score of 0.863 in classifying 55 arrhythmias, surpassing the performance of standard human experts.
+[Normal] PAPER 13
+[Normal] In the study “Cross-Stage Partial CNN + Transformer by Lee et al., 2024 IEEE Journal of Biomedical and Health Informatics” Lee and colleagues addressed computational challenges by integrating Cross-Stage Partial CNNs before Transformer processing. This reduces redundant feature computation and lowers memory usage while maintaining classification performance. The optimized hybrid model is suitable for portable ECG monitoring systems and resource-constrained devices.
+[Normal] PAPER 14
+[Normal] The study “Cross-Attention for Inter-Lead Modeling by Wang et al., 2023,Pattern Recognition in Medicine” this work models dependencies between multiple ECG leads using cross-attention mechanisms. It captures inter-lead relationships and generates visual explanations showing which leads and segments influenced predictions. The approach enhances both classification accuracy and clinical interpretability, encouraging AI adoption in cardiology.
+[Normal] CHAPTER 3
+[Normal] MACHINE LEARNING TECHNIQUES
+[Normal] CHAPTER 3
+[Normal] MACHINE LEARNING TECHNIQUES
+[Normal] 3.1 Introduction to Machine Learning
+[Normal] In this era of digital transformation, understanding the technologies that drive innovation is no longer a luxury but a necessity. One technology that has been at the forefront of this transformation is Machine Learning. Machine Learning, often abbreviated as ML, is a subset of Artificial Intelligence (AI) that focuses on the development of computer algorithms that improve automatically through experience and by the use of data. In simpler terms, Machine Learning enables computers to learn from data and make decisions or predictions without being explicitly programmed to do so.
+[Normal] At its core, Machine Learning is all about creating and implementing algorithms that facilitate these decisions and predictions. These algorithms are designed to they process more data. Improve their performance over time, becoming more accurate and effective as they process more data. In traditional programming, a computer follows a set of predefined instructions to perform a task. However, in Machine Learning, the computer is given a set of examples (data) and a task to perform, but it's up to the computer to figure out how to accomplish the task based on the examples it's given. For instance, if we want a computer to recognize images of cats, we don't provide it with specific instructions on what a cat looks like. Instead, we give it thousands of images of cats and let the Machine Learning algorithm figure out the common patterns and features that define a cat. Over time, as the algorithm processes more images, it gets better at recognizing cats, even when presented with images it has never seen before.
+[Normal] This ability to learn from data and improve over time makes Machine Learning incredibly powerful and versatile. It's the driving force behind many of the technological advancements we see today, from voice assistants and recommendation systems to self-driving cars and predictive analytics.
+[Normal] 3.1.1 Importance of Machine Learning
+[Normal] 1. Data processing: One of the primary reasons Machine Learning is so important is its ability to handle and make sense of large volumes of data. With the explosion of digital data from social media, sensors, and other sources, traditional data analysis methods have become inadequate. Machine Learning algorithms can process these vast amounts of data, uncover hidden patterns, and provide valuable insights that can drive decision-making.
+[Normal] 2. Driving innovation: Machine Learning is driving innovation and efficiency across various sectors. Here are a few examples:
+[Normal] i. Healthcare: Algorithms are used to predict disease outbreaks, personalize patient treatment plans, and improve medical imaging accuracy.
+[Normal] ii. Finance: Machine Learning is used for credit scoring, algorithmic trading. and fraud detection.
+[Normal] iii. Retail: Recommendation systems, supply chains, and customer service can all benefit from Machine Learning.
+[Normal] iv. The techniques used also find applications in sectors as diverse as agriculture, education, and entertainment.
+[Normal] 3. Enabling automation: Machine Learning is a key enabler of automation. By learning from data and improving over time, Machine Learning algorithms can perform previously manual tasks, freeing humans to focus on more complex and creative tasks. This not only increases efficiency but also opens up new possibilities for innovation.
+[Normal] 4. Improved Personalization: Machine learning algorithms can be used to personalize experiences for users. For example, recommendation systems on streaming services or online shopping platforms utilize ML to suggest products or content that users are likely to enjoy. This personalization can improve user satisfaction and engagement.
+[Normal] 5. Wide Range of Applications: The applications of machine learning are vast and ever-growing. ML is used in various fields including finance, healthcare, manufacturing, retail, and scientific research.
+[Normal] 3.1.2 Steps in implementing the Machine Learning algorithms
+[Normal] Understanding how Machine Learning works involves delving into a step-by-step process that transforms raw data into valuable insights. Here, Fig. 3.1 shows a flow chart of how a Machine Learning algorithm is implemented.
+[Normal] Fig. 3.1 Flow chart showing steps in implementing ML Algorithms
+[Normal] Step 1: Data collection:
+[Normal] The first step in the Machine Learning process is data collection. Data is the lifeblood of Machine Learning - the quality and quantity of your data can directly impact your model's performance. Data can be collected from various sources such as databases, text files, images, audio files, or even scraped from the web. Once collected, the data needs to be prepared for Machine Learning. This process involves organizing the data in a suitable format, such as a CSV file or a database, and ensuring that the data is relevant to the problem you're trying to solve.
+[Normal] Step 2: Data preprocessing:
+[Normal] Data preprocessing is a crucial step in the Machine Learning process. It involves cleaning the data (removing duplicates, correcting errors), handling missing data (either by removing it or filling it in), and normalizing the data (scaling the data to a standard format). Preprocessing improves the quality of your data and ensures that your Machine Learning model can interpret it correctly. This step can significantly improve the accuracy of your model. Our course, preprocessing for Machine Learning in python, explores how to get your cleaned data ready for modelling.
+[Normal] 3.1.3 Types of Machine Learning
+[Normal] Machine Learning can be broadly classified into three types based on the nature of the learning system and the data available as shown in Fig. 3.2: They are
+[Normal] 1. Supervised Learning
+[Normal] 2. Unsupervised Learning
+[Normal] 3. Reinforcement Learning.
+[Normal] Fig. 3.2 Types of Machine Learning
+[Normal] 1.Supervised Learning
+[Normal] Supervised learning is the most common type of Machine Learning. In this approach, the model is trained on a labelled dataset. In other words, the data is accompanied by a label that the model is trying to predict. This could be anything from a category label to a real-valued number. The model learns a mapping between the input (features) and the output (label) during the training process. Once trained, the model can predict the output for new, unseen data. Common examples of supervised learning algorithms include linear regression for regression problems and logistic regression, decision, and support vector machines for classification problems. In practical terms, this could look like an image recognition process, wherein a dataset of images where each picture is labelled as cat, dog, etc., a supervised model can recognize and categorize new images accurately.
+[Normal] 2. Unsupervised Learning
+[Normal] Unsupervised learning, on the other hand, involves training the model on an unlabelled dataset. The model is left to find patterns and relationships in the data on its own. This type of learning is often used for clustering and dimensionality reduction. Clustering involves grouping similar data points together, while dimensionality reduction involves reducing the number of random variables under consideration by obtaining a set of principal variables.
+[Normal] Common examples of unsupervised learning algorithms include k-means for clustering problems and principal component (PCA) for dimensionality reduction problems. Again, in practical terms, in the field of marketing, unsupervised learning is often used to segment a company's customer base. By examining purchasing patterns, demographic data, and other information, the algorithm can group customers intosegments that exhibit similar behaviours without any pre-existing labels.
+[Normal] 3.Reinforcement learning
+[Normal] Reinforcement learning empowers agents to learn by interacting with their environment. These agents, which can be software programs, robots, or any decision-making system, operate within an environment that provides sensory inputs and rewards based on the actions the agent takes. The agent constantly perceives its environment through observations, which define the current state. Based on this state, the agent selects an action using its current policy, a strategy dictating how actions are chosen in different situations. The key to RL lies in the feedback mechanism. After taking an action, the environment responds with a reward signal, indicating whether the action was beneficial (positive reward) or detrimental (negative reward). This reward feedback is used by the agent to update its policy, gradually learning which actions lead to better outcomes in the long run. The power of reinforcement learning lies in its ability to handle complex and dynamic environments. Unlike traditional programming that requires explicit instructions for every situation, RL agents can adapt their behaviour as the environment changes. This makes them particularly well-suited for scenarios where labelled data is scarce or the environment itself is constantly evolving.
+[Normal] 3.1.4 Applications of Machine Learning
+[Normal] Machine Learning applications are all around us, often working behind the scenes to enhance our daily lives. Here are some real-world examples.
+[Normal] Recommendation systems: Recommendation systems are one of the most visible applications of Machine Leaming. Companies like Netflix and Amazon use Machine Learning to analyse your past behaviour and recommend products or movies you might like. Learn how to build a recommendation engine in with our online course.
+[Normal] Voice assistants: Voice assistants like Siri, Alexa, and Google Assistant use Machine Learning to understand your voice commands and provide relevant responses. They continually learn from your interactions to improve their performance.
+[Normal] Fraud detection: Banks and credit card companies use Machine Learning to detect fraudulent transactions. By analysing patterns of normal and abnormal behaviour, they can flag suspicious activity in real-time. We have a fraud detection in python course, which explores the concept in more detail.
+[Normal] Natural Language Processing (NLP): Machine learning plays a pivotal role in natural language processing (NLP), which bridges the gap between human language and computer understanding. ML algorithms power features like spam filtering in emails, machine translation that allows seamless communication across languages, and virtual assistants like Siri or Alexa that respond to your voice commands with remarkable accuracy.
+[Normal] Scientific Discovery and Research: Machine learning is revolutionizing scientific research by enabling researchers to analyze massive datasets, identify hidden patterns, and accelerate scientific breakthroughs. In fields like genomics, ML algorithms can analyze genetic data to identify potential drug targets or predict disease outbreaks. Additionally, ML can be used to analyze complex astronomical data or simulate physical phenomena, fostering a deeper understanding of the universe.
+[Normal] 3.2 Machine Learning Techniques
+[Normal] 3.2.1 KNN Algorithm
+[Normal] K-nearest neighbors (KNN) is a type of supervised learning algorithm used for both regression and classification.As Fig. 3.3 shows how the KNN algorithm works. KNN tries to predict the correct class for the test data by calculating the distance between the test data and all the training points. Then select the K number of points which is close to the test data. The KNN algorithm calculates the probability of the test data belonging to the classes of 'K' training data and class holds the highest probability will be selected. In the case of regression, the value is the mean of the 'K' selected training points. Let see the below example to make it a better understanding.
+[Normal] Fig. 3.3 KNN Algorithm
+[Normal] KNN (K-Nearest Neighbours) is a non-parametric algorithm, which means it does not make any assumptions about the underlying distribution of the data. In KNN Classifier, a new data point is classified based on its proximity to the K nearest neighbours in the training set. The proximity is measured using a distance metric, such as Euclidean distance or Manhattan distance. The class of the majority of the K nearest neighbours is then assigned to the new data point as its predicted class.
+[Normal] 3.2.2 Decision Tree
+[Normal] Decision Tree is a supervised learning technique that can be used for both classification and Regression problems, but mostly it is preferred for solving Classification problems. It is a tree-structured classifier, where internal nodes represent the features of a dataset, branches represent the decision rules, and each leaf node represents the outcome.
+[Normal] In a Decision tree, there are two nodes, which are the Decision node and Leaf node as shown in Fig. 3.4. Decision nodes are used to make any decision and have multiple branches, whereas Leaf nodes are the output of those decisions and do not contain any further branches. The decisions or the test are performed on the basis of features of the given dataset. It is a graphical representation for getting all the possible solutions to a problem/decision based on given conditions. The decisions or the test are performed on the basis of features of the given dataset. It is a graphical representation for getting all the possible solutions to a problem/decision based on given conditions. It is called a decision tree because, similar to a tree, it starts with the root node, which expands on further branches and constructs a tree-like structure. In order to build a tree, we use the CART algorithm, which stands for Classification and Regression Tree algorithm. A decision tree simply asks a question and based on the answer (Yes/No), it further split the tree into subtrees.
+[Normal] 3.2.3 Random Forest
+[Normal] Random Forest is a popular machine learning algorithm that belongs to the supervised learning technique. It can be used for both Classification and Regression problems in ML. It is based on the concept of ensemble learning, which is a process of combining multiple classifiers to solve a complex problem and to improve the performance of the model. As the name suggests, Random Forest is a classifier that contains a number of decision trees on various subsets of the given dataset and takes the average to improve the predictive accuracy of that dataset. Instead of relying on one decision tree, the random forest takes the prediction from each tree and based on the majority votes of predictions, and it predicts the final output. The below Fig. 3.5 explains the working of the Random Forest algorithm:
+[Normal] Fig. 3.5 Random Forest Algorithm
+[Normal] 3.2.4 Support Vector Machine (SVM)
+[Normal] Support Vector Machine (SVM) is a supervised machine learning algorithm used for classification and regression tasks. While it can handle regression problems, SVM is particularly well-suited for classification tasks. SVM aims to find the optimal hyperplane in an N-dimensional space to separate data points into different classes. The algorithm maximizes the margin between the closest points of different classes.
+[Normal] Fig. 3.6 Support Vector Machine (SVM)
+[Normal] 3.2.5 XGBOOST
+[Normal] Gradient Boosting is a powerful boosting algorithm that combines several weak learners into strong learners, in which each new model is trained to minimize the loss function such as mean squared error or cross-entropy of the previous model using gradient descent. In each iteration, the algorithm computes the gradient of the loss function with respect to the predictions of the current ensemble and then trains a new weak model to minimize this gradient. The predictions of the new model are then added to the ensemble, and the process is repeated until a stopping criterion is met. There is a technique called the Gradient Boosted Trees whose base learner is CART (Classification and Regression Trees). The below Fig.3.7 explains how gradient-boosted trees are trained for regression problems
+[Normal] Fig. 3.7   Gradient Boosting
+[Normal] 3.3 Ensemble Learning
+[Normal] Ensemble learning is a machine learning technique that combines the    predictions of multiple models (often called base learners) to create a single, more robust and accurate model. Imagine a group of experts coming together to make a decision – by leveraging the strengths and insights of each individual, the group can arrive at a more informed and reliable conclusion.
+[Normal] Fig. 3.8 Ensemble Learning
+[Normal] Ensemble learning follows a similar principle, aiming to surpass the performance of any single model by harnessing the collective wisdom of multiple learners. Here Fig. 3.8 shows how an Ensemble Learning Works. Base Learners are the individual models that are combined to form the ensemble. They can be any type of machine learning model, such as decision trees, support vector machines, or neural networks. There are different ways to create and combine multiple models. Depending on how they do it, we can classify ensemble models into five main types
+[Normal] 1. Majority
+[Normal] 2. Average
+[Normal] 3. Stacking
+[Normal] 4. Bagging
+[Normal] 5. Boosting
+[Normal] 3.3.1 Majority
+[Normal] A special case of bagging is when the models are used for classification instead of regression. For example, if you have three models that predict whether it will rain in Paris as yes or no, you can take their majority vote and get yes as the final prediction. This is also called a majority ensemble (Fig. 3.9) or a plurality ensemble. The advantage of majority voting is that it reduces the error rate of the predictions, meaning that they are more likely to be correct. The disadvantage is that it does not account for the confidence or probability of each prediction, meaning that it can ignore some useful information.
+[Normal] Fig. 3.9 Majority Ensemble Learning
+[Normal] 3.3.2 Average
+[Normal] The simplest way to combine multiple models is to take their average. The advantage of averaging is that it reduces the variance of the predictions, meaning that they are less likely to be far from the true value. The disadvantage is that it also reduces the bias of the predictions, meaning that they are less likely to be close to the true value. In other words, averaging makes predictions more consistent but also more conservative. This is also called as mean ensemble. It works as shown on Fig. 3.10
+[Normal] Fig. 3.10 Average Ensemble Learning
+[Normal] 3.3.3 Stacking
+[Normal] Another way to combine multiple models is to use them as inputs for another model. The advantage of stacking is that it can learn from the strengths and weaknesses of each model and make a more accurate prediction. The disadvantage is that it can be more complex and prone to overfitting, meaning that it can perform well on the training data but poorly on new data.
+[Normal] Working for Stacking Learning
+[Normal] 1. Train Base Leaners: The first layer involves training a set of diverse machine learning models (base learners) on the original dataset. These base learners can be any type of model, such as decision trees, support vector machines, or neural networks.
+[Normal] 2. Generate Meta-Features: Instead of directly combining the raw predictions from the base learners, stacking creates a new layer of features. Each data point now has additional features that represent the predictions made by each base learner for that point. Essentially, the base learner predictions become features for a new model.
+[Normal] 3. Train Meta-Learner: A new model, called the meta-learner, is trained on this augmented dataset containing the original features and the base learner predictions (meta-features). This meta-learner essentially learns how to best combine the diverse insights captured by the base learners.
+[Normal] 4. Final Prediction: During prediction, the meta-learner takes new, unseen data points as input and leverages its knowledge to make the final prediction. Here below Fig. 3.11 show how a Stacking Ensemble Learning Works.
+[Normal] Fig.3.11 Stacking Ensemble Learning
+[Normal] 3.3.4 Bagging
+[Normal] Fig. 3.12 Bagging Ensemble Learning
+[Normal] A fourth way to combine multiple models is to use different subsets of the data to train them. Here Fig. 3.12 shows how a Bagging Ensemble Learning works. For example, if you have a dataset of 1000 observations, you can randomly sample 500 observations with replacements (meaning that some observations can be repeated) and use them to train one model. You can repeat this process several times and get different models trained on different subsets of the data. This is also called bootstrap aggregating or bootstrapping. The advantage of bagging is that it reduces the variance of the predictions, meaning that they are less likely to be far from the true value. The disadvantage is that it does not reduce the bias of the predictions, meaning that they are still likely to be close to the true value. In other words, bagging makes the predictions more consistent but not more accurate.
+[Normal] 3.3.5 Boosting
+[Normal] The final way to combine multiple models is to use them sequentially and iteratively. Here Fig. 3.13 shows how Boosting Ensemble Learning works. For example, if you have one model that predicts the temperature in Paris as 15°C, you can use its errors or residuals as inputs for another model that tries to correct them and make a better prediction. You can repeat this process several times and get different models that learn from each other's mistakes. This is also called adaptive boosting or AdaBoost.
+[Normal] Fig. 3.13 Boosting Ensemble Learning
+[Normal] The advantage of boosting is that it reduces both the variance and the bias of the predictions, meaning that they are more likely to be close and accurate to the true value. The disadvantage is that it can be more sensitive to outliers and noise, meaning that it can overfit or underfit the data.
+[Normal] CHAPTER 4
+[Normal] DEEP LEARNING TECHNIQUES
+[Normal] CHAPTER 4
+[Normal] DEEP LEARNING TECHNIQUES
+[Normal] 4.1 Introduction to Deep Learning
+[Normal] Deep learning is a subset of machine learning that focuses on learning representations of data through hierarchical layers of artificial neural networks. Unlike traditional machine learning algorithms that require handcrafted feature extraction, deep learning algorithms can automatically learn feature representations from raw data. Deep learning models, known as deep neural networks, consist of multiple layers of interconnected neurons that process data in a hierarchical fashion, with each layer learning increasingly abstract features.
+[Normal] The term "deep" in deep learning refers to the depth of these neural networks, which can have many layers, typically ranging from tens to hundreds or even thousands of layers. Each layer in a deep neural network performs a transformation on the input data, and the output of one layer serves as the input to the next layer. The final layer of the network produces the desired output, such as a classification label or a regression value.
+[Normal] Deep learning has achieved remarkable success in various domains, including computer vision, natural language processing, speech recognition, and healthcare. Convolutional neural networks (CNNs) are commonly used for image analysis tasks such as image classification, object detection, and image segmentation. Recurrent neural networks (RNNs) are well-suited for sequential data processing tasks such as language translation, speech recognition, and time series prediction.
+[Normal] One of the key advantages of deep learning is its ability to automatically learn hierarchical representations of data, capturing intricate patterns and relationships that may be difficult to specify manually. Deep learning models can handle large volumes of data and learn complex functions, making them particularly effective for tasks with high-dimensional inputs and outputs.
+[Normal] Deep learning continues to advance rapidly, with ongoing research focusing on improving model architectures, training algorithms, and interpretability which is shown in Fig 4.1. Its widespread adoption and success have led to numerous breakthroughs and innovations, paving the way for new applications and capabilities across various fields.
+[Normal] Fig 4.1: Block Diagram
+[Heading 4] 4.1.1 Convolution Neural Networks
+[Normal] It is a type of deep learning algorithm commonly used for analyzing visual imagery. CNNs are particularly effective in tasks such as image classification, object detection, facial recognition, and image segmentation.
+[Normal] Convolutional Layers: CNNs consist of multiple convolutional layers that learn to extract features from the input images. Each convolutional layer applies a set of learnable filters (also known as kernels) to the input image, performing a convolution operation. This operation captures different patterns and features present in the image, such as edges, textures, and shapes.
+[Normal] Pooling Layers: After each convolutional layer, CNNs typically include pooling layers to down sample the feature maps generated by the convolutional layers. Pooling layers reduce the spatial dimensions of the feature maps while retaining the most important information. Common pooling operations include max pooling and average pooling.
+[Normal] Activation Function: CNNs use activation functions (such as ReLU - Rectified Linear Unit) to introduce non-linearity into the model, allowing it to learn complex patterns and relationships in the data.
+[Normal] Fully Connected Layers: Towards the end of the CNN architecture, fully connected layers are used to classify the extracted features into different categories. These layers connect every neuron in one layer to every neuron in the next layer, enabling the network to learn high-level representations of the input data and make predictions.
+[Normal] Training: CNNs are trained using labeled training data through a process called backpropagation. During training, the network learns to adjust the parameters (such as filter weights and biases) to minimize the difference between its predictions and the true labels in the training data. This process is typically done using optimization algorithms like stochastic gradient descent (SGD) or its variants.
+[Caption] Fig 4.2 convolutional neural network
+[Normal] 4.1.2 Advantages of CNN
+[Normal] Feature Hierarchies: CNNs can automatically learn hierarchical representations of features from raw image data. Lower layers of the network learn simple features like edges and textures, while higher layers learn more complex features like shapes and objects.
+[Normal] Translation Invariance: CNNs are inherently translation invariant, meaning they can detect features in different parts of the image regardless of their location. This property makes CNNs robust to changes in the position or orientation of objects in the image.
+[Normal] Parameter Sharing: CNNs use parameter sharing, where the same set of weights (filters) is applied to different parts of the image. This significantly reduces the number of parameters in the network, making it more efficient and easier to train.
+[Normal] State-of-the-Art Performance: CNNs have achieved state-of-the-art performance in various computer vision tasks, including image classification, object detection, and semantic segmentation, surpassing traditional machine learning techniques and human performance in some cases.
+[Normal] 4.2 Attention Mechanism
+[Normal] The attention mechanism is a key component in deep learning models, particularly in the field of natural language processing (NLP) and computer vision. It allows models to focus on different parts of the input data (e.g., words in a sentence, pixels in an image) with varying degrees of importance, rather than treating all parts of the input equally. This selective attention mechanism helps improve the performance of the model by enabling it to dynamically weigh the importance of different inputs during processing. Fig 4.3 shows the attention mechanism.
+[Caption] Fig 4.3 Attention Mechanism
+[Normal] Context and Query: At its core, the attention mechanism involves context and a query. The context represents the input data (e.g., a sequence of words in a sentence), while the query represents a specific aspect or feature of interest within the context (e.g., a particular word in the sentence).
+[Normal] Attention Scores: The attention mechanism computes attention scores for each element in the context based on its relevance to the query. These attention scores quantify the importance or relevance of each element in the context with respect to the query.
+[Normal] Attention Weights: The attention scores are then transformed into attention weights through a normalization process (e.g., using the SoftMax function). These attention weights represent the relative importance of each element in the context, with higher weights assigned to more relevant elements and lower weights assigned to less relevant elements.
+[Normal] Weighted Sum: Finally, the attention mechanism computes a weighted sum of the elements in the context, where each element is multiplied by its corresponding attention weight. This weighted sum, often referred to as the attention context or attended representation, captures the model's focused attention on the most relevant parts of the input data with respect to the query.
+[Normal] 4.2.1 Working of Attention Mechanism
+[Normal] Contextual Relevance: In many machine learning tasks, especially those involving sequences like sentences or images, different parts of the input may have varying levels of relevance to the output or prediction.
+[Normal] Weighted Emphasis: The attention mechanism assigns weights to different parts of the input, emphasizing elements that are more relevant to the task at hand. It effectively provides a mechanism for the model to "pay attention" to specific regions or features.
+[Normal] Dynamic Attention: Importantly, attention is often dynamic and can be recalibrated for each input or step in a sequence. This means that the model can adaptively shift its focus based on the current context, allowing for a more nuanced understanding of the input data.
+[Normal] Components of Attention: There are different components in the attention mechanism. The key components include the query, key, and value vectors. The query represents the current input, the key represents elements in the input to compare against, and the value represents the information to be extracted. The attention weight is computed based on the compatibility between the query and key, and the weighted sum of values is used for the final output.
+[Normal] Self-Attention: Self-attention, also known as intra-attention, is a type of attention mechanism where the model attends to different positions in the input sequence. Transformer architectures, widely used in NLP tasks, leverage self-attention to capture contextual information from the entire sequence.
+[Normal] The attention mechanism can be applied in various deep learning architectures, including recurrent neural networks (RNNs), convolutional neural networks (CNNs), and transformer models. In NLP tasks, such as machine translation and text summarization, attention mechanisms have been instrumental in improving the accuracy and fluency of generated outputs by allowing models to selectively attend to relevant words in the input sequence. Similarly, in computer vision tasks, attention mechanisms have been used to enhance object detection, image captioning, and visual question answering by enabling models to focus on salient regions of an image.
+[Normal] 4.2.2 Advantages of Attention Mechanism
+[Normal] The integration of attention mechanisms into ECG analysis models offers several advantages, including enhanced feature localization, improved interpretability, selective information processing, adaptability to variable-length sequences, and personalized diagnosis. These advantages contribute to the development of more accurate, reliable, and clinically relevant diagnostic tools for assessing cardiac health and identifying cardiac abnormalities in patients.
+[Normal] Enhanced Feature Localization: Attention mechanisms can help identify and focus on specific segments of the ECG signal that are most relevant for a particular diagnostic task. By dynamically allocating attention to informative regions of the signal, the model can effectively localize features associated with cardiac abnormalities, such as abnormal waveforms or arrhythmias.
+[Normal] Improved Interpretability: Attention mechanisms provide insights into which parts of the ECG signal contribute most to the model's predictions. This enhanced interpretability can aid clinicians in understanding the reasoning behind the model's decisions, making it easier to trust and validate the diagnostic outputs generated by the model.
+[Normal] Selective Information Processing: ECG signals often contain noise and artifacts that can interfere with accurate diagnosis. Attention mechanisms enable the model to selectively attend to informative components of the signal while ignoring irrelevant noise. This selective information processing can improve the robustness and accuracy of the diagnostic model, particularly in noisy clinical environments.
+[Normal] Adaptability to Variable-Length Sequences: ECG signals can vary in length depending on factors such as the duration of the recording and the patient's heart rate. Attention mechanisms allow the model to dynamically adapt its focus to different segments of the ECG signal, regardless of their length. This adaptability enables the model to effectively handle variable-length sequences and capture important temporal patterns in the signal.
+[Normal] Personalized Diagnosis: Attention mechanisms can be personalized to individual patients' ECG characteristics and medical history. By learning patient-specific patterns and preferences, the model can tailor its attention to features that are most relevant for each patient's unique cardiac profile, leading to more personalized and accurate diagnostic assessments.
+[Heading 5] 4.2.3 Applications of Attention Mechanism
+[Normal] The application of attention mechanisms in the analysis of electrocardiogram (ECG) signals has several potential applications in the field of cardiology and healthcare:
+[Normal] Arrhythmia Detection: Attention mechanisms can be used to highlight specific segments of the ECG signal that are indicative of arrhythmias or irregular heartbeats. By focusing on relevant patterns and abnormalities in the signal, attention-based models can improve the accuracy of arrhythmia detection and classification, aiding in the diagnosis and management of cardiac arrhythmia.
+[Normal] Ischemia Detection: Attention mechanisms can help identify ischemic changes in the ECG signal, which indicate insufficient blood flow to the heart muscle. By directing attention to characteristic ST-segment deviations or T-wave abnormalities associated with myocardial ischemia, attention-based models can assist in the early detection and diagnosis of ischemic heart disease.
+[Normal] ECG Denoising: ECG signals are often contaminated with noise and artifacts, which can interfere with accurate diagnosis. Attention mechanisms can selectively focus on informative components of the signal while suppressing irrelevant noise, thereby improving the quality and reliability of ECG signal denoising techniques.
+[Normal] Feature Localization: Attention mechanisms can localize specific features or landmarks in the ECG signal, such as the P-wave, QRS complex, and T-wave. By directing attention to these key features, attention-based models can facilitate automated ECG analysis tasks, such as heartbeat segmentation, interval measurement, and feature extraction.
+[Normal] Long-term Monitoring: Attention mechanisms can be applied to long-term ECG monitoring data, such as Holter recordings or ambulatory ECGs. By dynamically allocating attention to relevant segments of the continuous ECG signal, attention-based models can assist in the detection of transient arrhythmia, silent ischemia, and other cardiac abnormalities that may occur intermittently over time.
+[Normal] Personalized Risk Assessment: Attention mechanisms can be personalized to individual patients' ECG characteristics, medical history, and risk factors. By learning patient-specific patterns and preferences, attention-based models can tailor their analysis to identify subtle changes or abnormalities in the ECG signal that may indicate increased cardiovascular risk or the need for further evaluation.
+[Normal] 4.3 Transformer Network
+[Normal] Fig 4.4 Transformer Network
+[Normal] 4.3.1 Working of Transformer Network
+[Normal] The Transformer Network is a deep learning model introduced in the landmark paper Attention is All You Need. Fig 4.4 shows the transformer network It is primarily designed to handle sequential data like language but does so in a way that replaces traditional recurrent or convolutional neural networks with a more efficient architecture:
+[Normal] Attention Mechanism: The core of the Transformer is its self-attention mechanism, which allows the model to weigh the importance of different parts of the input sequence.
+[Normal] Encoder-Decoder Architecture: It typically has two main parts:
+[Normal] Encoder: Processes the input sequence and generates context-aware embeddings.
+[Normal] Decoder: Takes the embeddings and predicts output sequences, like translations in NLP tasks.
+[Normal] Feedforward Layers: These are used after the attention mechanism for further processing.
+[Normal] Position Encoding: Since Transformers lack inherent order awareness, they use position encodings to represent the sequence order.
+[Normal] 4.3.2 Advantages of Transformer Network
+[Normal] Parallelism: Unlike RNNs, Transformers process sequences in parallel rather than step-by-step, making them faster and scalable.
+[Normal] Flexibility: They work well across a range of applications, from text translation to image recognition.
+[Normal] State-of-the-Art Performance: Transformers have set benchmarks in tasks like natural language understanding and generation (e.g., GPT and BERT models).
+[Normal] Attention-Based Efficiency: The self-attention mechanism enables the model to capture long-range dependencies effectively.
+[Normal] 4.3.3 Applications for Transformer Network
+[Normal] Transformer Networks find extensive applications across multiple domains. In Natural Language Processing (NLP), they are the backbone of tasks such as language translation, text summarization, sentiment analysis, and question-answering systems. Tools like Google Translate and GPT-based models owe their success to Transformers. In computer vision, Vision Transformers (ViTs) are used for image classification and object detection, pushing the boundaries of image-based AI. Technology is also employed in speech processing, facilitating advancements in automatic speech recognition and synthesis. Beyond these, Transformers power generative AI models for creating coherent text, art, or even music, and are pivotal in gaming for designing decision-making AI agents. Their versatility across text, image, and audio-based tasks has revolutionized artificial intelligence, making them indispensable in modern AI applications.
+[Normal] CHAPTER 5
+[Normal] METHODOLOGY
+[Normal] CHAPTER 5
+[Normal] METHODOLOGY
+[Normal] To classify ECG signals, we initially implemented various machine learning models and evaluated their performance based on accuracy. The highest-performing ML model was then ensembled with other classifiers to improve classification accuracy and robustness. While ensemble methods enhanced performance, the need for better feature extraction and generalization led to the development of a more advanced deep learning approach.
+[Normal] To address this, we designed a Convolutional-Attention-Transformer (CAT) Network, integrating Convolutional Neural Networks (CNNs), an Attention Mechanism, and a Transformer Encoder. The CNN extracts spatial features from ECG waveforms, the attention mechanism highlights crucial signal patterns, and the transformer encoder improves sequence learning and pattern recognition.
+[Normal] 5.1 ECG Dataset
+[Normal] MIT-BIH arrhythmias database: The database comprises 48-records of 2 channel ECG signals of 30-min duration obtained from 47 subjects between 1975 and 1979 at the BIH Arrhythmia Laboratory. Twenty-three recordings were selected randomly from a set of 4000 ECG records from subjects of inpatients and outpatients at Boston's Beth Israel Hospital, remaining 25 were selected from the same set having clinically arrhythmias. Twenty-five men of age 32 to 89 years, and twenty-two women aged 23-89 years were selected. The database consists of 116,137 QRS complexes. The ECG signals were sampled at 360 samples per second with 11-bit resolution over a 10-mV range and band pass-filtered at 0.1-100 Hz. It was verified by independent cardiologist to annotate for both timing and beat class information. The different beats include Normal beat (N), LBBB, RBBB, atrial premature beats (APB), and premature ventricular complex (PVC) of recorded signals, which are summarized in Table 1.
+[Normal] AAMI standard: The MIT-BIH heartbeat types are combined according to the Association for the Advancement of Medical Instrumentation (AAMI) recommendation. It emphasizes the problem of classifying ventricular ectopic beats (VEBs) from the non-ventricular ectopic beats shown in Fig 5.1. The following five types of heartbeat are classified according to AAMI standard:
+[Normal] Table 1 Distribution of ECG records for different arrhythmia of MIT-BIH database.
+[Normal] 1.N (Normal beat)
+[Normal] 2.S (supraventricular ectopic beats (SVEBS))
+[Normal] 3.V (ventricular ectopic beats (VEBS))
+[Normal] 4.F (fusion beats)
+[Normal] 5.Q (unclassified beats, including paced beats)
+[Normal] Fig 5.1 Sample ECG Signal Types Representing AAMI Standard Heartbeat Classes
+[Normal] 5.2 Preprossing
+[Normal] Raw ECG Signal Acquisition
+[Normal] The Raw ECG Signal is the original recording obtained from sensors placed on the patient’s skin. It contains essential heart activity information but is often corrupted by various noise sources like:
+[Normal] Baseline drift (slow fluctuations due to patient movement or respiration)
+[Normal] Powerline interference (50/60 Hz noise from electrical sources)
+[Normal] Muscle noise (high-frequency noise caused by muscle contractions)
+[Normal] Fig 5.2 shows these irregularities as fluctuations between QRS complexes.
+[Normal] Denoising Process To ensure accurate ECG analysis, denoising is essential. The following steps are applied:
+[Normal] Baseline Drift Removal
+[Normal] A Median Filter with window sizes of 200 ms and 600 ms is applied: 200 ms filter: Removes sharp peaks like the P-wave, QRS complex, and T-wave. 600 ms filter: Captures the overall trend in the signal. The extracted baseline is subtracted from the original ECG signal to correct the drift.
+[Normal] Wavelet Transform for Noise Reduction
+[Normal] The ECG signal processing begins with the application of the Discrete Wavelet Transform (DWT), which decomposes the signal into various frequency bands. Noise suppression is achieved through high pass filtering by thresholding DWT coefficients, effectively reducing interference from sources like powerline disturbances, motion artifacts, and muscle noise. The clean, noise-free signal is then reconstructed using the Inverse DWT (IDWT). For accurate heartbeat classification, segmentation of the ECG signal is critical. The process involves detecting R-peaks, which serve as reference points for segmentation, using algorithms such as the Pan-Tompkins Algorithm. Each heartbeat is subsequently segmented within a fixed window of 700 milliseconds, ensuring the QRS complex is centrally positioned for optimal feature extraction. The segmentation boundaries are visually marked with dotted lines, aiding in the analysis and classification of heartbeats.
+[Normal] Fig 5.2 Raw ECG Signal with Noise, Denoised ECG Signal, and Segmentation using R-Peak Detection
+[Normal] 5.3 Feature Extraction
+[Normal] TSFEL (Time Series Feature Extraction Library) is a valuable tool for extracting meaningful features from ECG signals, which is essential for supporting machine learning-based classification. The library categorizes the extracted features into three main domains: spectral, statistical, and temporal. Each of these domains provides unique insights into the ECG data, enabling a comprehensive analysis of the signal.
+[Normal] The extracted features play a critical role in various applications, such as ECG classification, arrhythmia detection, and noise filtering. By leveraging these features, researchers and clinicians can gain deeper insights into heart activity, improve diagnostic accuracy, and enhance the reliability of ECG analysis. This makes TSFEL a powerful and versatile tool for signal processing and analysis in the medical field.
+[Normal] 5.4 Balancing Dataset
+[Normal] The MIT-BIH dataset suffers from class imbalance, where the number of samples varies significantly across different classes. This imbalance can cause machine learning models to favor the majority class, leading to poor performance when predicting minority classes. To mitigate this issue, the Synthetic Minority Over-sampling Technique (SMOTE) is employed. SMOTE addresses the imbalance by generating synthetic samples for the minority class, improving the model's ability to learn and classify underrepresented data effectively. SMOTE operates by selecting instances from the minority class and creating new synthetic samples along the lines connecting them to their nearest neighbors. This process results in a more balanced dataset, reducing bias and enhancing the model's generalization capabilities. By applying SMOTE, the classification performance for minority classes is significantly improved, ensuring a more robust and fair evaluation of the model across all classes. This technique is particularly valuable in medical applications, where accurate detection of rare but critical conditions, such as arrhythmias, is essential.
+[Normal] 5.5 Feature Selection
+[Normal] Feature selection plays a crucial role in improving the accuracy and efficiency of ECG arrhythmia classification. By selecting the most relevant features, we can enhance model interpretability, reduce computational complexity, and minimize the risk of overfitting. Below are some key feature selection techniques applicable to arrhythmia classification.
+[Normal] 1. Statistical and Time-Domain Features
+[Normal] These features help in capturing the overall signal characteristics:
+[Normal] Mean, Median, Variance: Statistical measures of ECG signals.
+[Normal] Heart Rate Variability (HRV) Metrics: Time between successive R-peaks (RR intervals).
+[Normal] QRS Complex Duration: Detects abnormal ventricular activities.
+[Normal] P-wave & T-wave Duration: Helps distinguish between normal and abnormal heart rhythms.
+[Normal] 2. Frequency-Domain Features
+[Normal] Fourier Transform and Wavelet Transform methods can extract important spectral features:
+[Normal] Power Spectral Density (PSD): Represents signal power distribution over frequency.
+[Normal] Low-Frequency (LF) and High-Frequency (HF) Components: Used in HRV analysis.
+[Normal] Wavelet Coefficients: Useful for detecting arrhythmic patterns in non-stationary ECG signals.
+[Normal] 3. Morphological Features
+[Normal] These features are extracted from ECG waveform shapes:
+[Normal] Amplitude and Slope of P, QRS, and T waves
+[Normal] QT Interval & ST Segment Analysis
+[Normal] R-R Interval Variability
+[Normal] T-wave Alternans: Indicator of ventricular arrhythmias.
+[Normal] 4. Entropy-Based Features
+[Normal] Used to measure signal complexity and irregularities:
+[Normal] Approximate Entropy (ApEn): Measures time-series predictability.
+[Normal] Sample Entropy (SampEn): Similar to ApEn but more robust.
+[Normal] Shannon Entropy: Assesses the randomness of ECG signals.
+[Normal] 5. Machine Learning-Based Feature Selection
+[Normal] Recursive Feature Elimination (RFE): Iteratively removes less important features.
+[Normal] Principal Component Analysis (PCA): Reduces dimensionality while preserving variance.
+[Normal] LASSO (Least Absolute Shrinkage and Selection Operator): Selects features by penalizing regression coefficients.
+[Normal] Mutual Information (MI): Measures statistical dependence between features and target labels.
+[Normal] 6. Deep Learning Feature Extraction
+[Normal] Deep learning models can automatically extract high-level features:
+[Normal] Convolutional Neural Networks (CNNs): Extract spatial and temporal ECG patterns.
+[Normal] Autoencoders: Learn compressed ECG representations.
+[Normal] Transformers & Attention Mechanisms: Focus on critical ECG segments for classification.
+[Normal] 5.6 Classification
+[Normal] Arrhythmia Classification Using Mahine Learning Models
+[Normal] Fig 5.3 Classification Workflow Using ML Models
+[Normal] The fig 5.3 presents a structured workflow for ECG arrhythmia classification using machine learning models. It begins with the pre-processing of raw ECG signals, where noise is removed through filtering, and important segments are extracted for further analysis. Following this, feature extraction is performed to obtain relevant information from the ECG signals, including spectral, statistical, and temporal features, which are crucial for effective classification.
+[Normal] To enhance model efficiency and reduce dimensionality, a feature selection process is applied, incorporating techniques like feature scaling, removal of low-variance features, and elimination of highly correlated features. Additionally, Recursive Feature Elimination using Random Forest (RF-RFE) is employed to retain only the most significant features. The dataset is then balanced using Synthetic Minority Over-sampling Technique (SMOTE) to address class imbalance and improve classification accuracy.
+[Normal] Once the optimal features are selected, various machine learning classifiers are trained and evaluated. The best-performing algorithm is chosen for final classification, where ECG beats are categorized into different arrhythmia classes (N, S, V, F, Q).
+[Normal] Arrhythmia Classification Using Ensemble Models
+[Normal] Fig 5.4 Classification Workflow Using Ensemble Models
+[Normal] The fig 5.4 illustrates a comprehensive pipeline for ECG arrhythmia classification using ensemble models. The process begins with pre-processing, where raw ECG signals undergo filtering and segmentation to remove noise and extract meaningful cardiac waveforms. This is followed by feature extraction, where spectral, statistical, and temporal features are computed to capture critical characteristics of ECG signals.
+[Normal] To enhance model efficiency, a feature selection step is applied, including feature scaling, removal of low-variance and highly correlated features, and Recursive Feature Elimination using Random Forest (RF-RFE) to select the most relevant features. The dataset is further balanced using Synthetic Minority Over-sampling Technique (SMOTE) to ensure fair representation of all arrhythmia classes, improving the classifier's generalization capability.
+[Normal] The selected features are then fed into ensemble models, which combine multiple classifiers to enhance classification accuracy and robustness. The best-performing ensemble model is chosen through evaluation, leading to final classification, where ECG beats are categorized into five arrhythmia classes (N, S, V, F, Q). This structured approach leverages ensemble learning to achieve superior performance in ECG arrhythmia classification.
+[Normal] Arrhythmia Classification Using CAT Network
+[Normal] The fig 5.5 presents a structured pipeline for ECG arrhythmia classification using the CAT Network. The process begins with pre-processing, where raw ECG signals undergo filtering and segmentation to remove noise and extract relevant cardiac
+[Normal] waveforms. Following this, feature extraction is performed to derive spectral, statistical, and temporal features, which provide critical insights into the ECG signal characteristics.
+[Normal] Fig 5.5 Classification Workflow Using CAT Network
+[Normal] To enhance model efficiency and reduce redundancy, a feature selection step is applied, incorporating feature scaling, removal of low-variance and highly correlated features, and Recursive Feature Elimination using Random Forest (RF-RFE) to retain the most significant features. The dataset is further balanced using Synthetic Minority Over-sampling Technique (SMOTE) to ensure fair representation of different arrhythmia classes, improving the generalization capability of the model.
+[Normal] The selected features are then fed into the CAT Network, which is designed to enhance classification performance by effectively capturing complex patterns in the ECG data. After model evaluation, the best-performing approach is selected, leading to final classification, where ECG beats are categorized into five arrhythmia classes (N, S, V, F, Q). This systematic approach leverages deep learning and feature optimization techniques to achieve high accuracy and reliability in ECG arrhythmia classification.
+[Normal] Cat Network Architecture
+[Normal] The fig 5.6 illustrates a deep learning architecture for ECG arrhythmia classification, integrating convolutional layers with attention mechanisms and a transformer encoder. The model begins with an input ECG signal of size 300×1, which undergoes multiple stages of feature extraction using convolutional, batch normalization (BN), attention, and pooling layers. The first convolutional layer extracts 16 feature maps, followed by subsequent layers that increase the depth to 32, 64, and finally 128 feature maps while reducing the spatial dimensions through pooling operations.
+[Normal] Fig 5.6 CAT-Net Architecture
+[Normal] After the fourth convolutional stage, positional encoding is added, and the features are passed through a transformer encoder, which consists of multi-head attention, feed-forward layers, and normalization layers to capture complex temporal dependencies in the ECG signal. The output of the transformer is flattened and fed into a fully connected network, which consists of a dense layer with 128 neurons followed by another dense layer with 5 output neurons, corresponding to the five arrhythmia classes (N, S, V, F, Q).
+[Normal] 5.7 Evaluation Metrics for Arrhythmia Classification
+[Normal] In the evaluation of the ECG arrhythmia classification model, several key performance metrics are used to assess its effectiveness and reliability. These metrics help in understanding how well the model classifies ECG signals into different arrhythmia categories.
+[Normal] Accuracy: It represents the overall correctness of the model by calculating the ratio of correctly classified instances to the total instances. It is given by:
+[Normal] where TP (True Positives), TN (True Negatives), FP (False Positives), and FN (False Negatives) denote the classification outcomes.
+[Normal] Precision (Positive Predictive Value): Precision measures how many of the predicted positive cases are actually correct. It is calculated as:
+[Normal] Recall (Sensitivity or True Positive Rate): Recall determines how well the model identifies actual positive cases. It is given by:
+[Normal] A higher recall value signifies that fewer actual positive cases are missed.
+[Normal] F1-Score: The F1-score provides a balance between precision and recall, especially useful in imbalanced datasets. It is computed as:
+[Normal] A higher F1-score indicates a strong balance between precision and recall.
+[Normal] Specificity (True Negative Rate): Specificity evaluates how well the model identifies negative cases. It is expressed as:
+[Normal] Confusion Matrix: This matrix provides a visual representation of model performance, displaying the counts of actual versus predicted classifications for each arrhythmia category. It helps in analysing misclassification patterns.
+[Normal] ROC Curve and AUC (Area Under the Curve): The Receiver Operating Characteristic (ROC) Curve illustrates the trade-off between sensitivity and specificity at different classification thresholds. The AUC value indicates the model’s ability to distinguish between classes, with a value closer to 1 signifying better performance.
+[Normal] CHAPTER 6
+[Normal] SOFTWARE
+[Normal] CHAPTER 6
+[Normal] SOFTWARE
+[Normal] In this project we used the GOOGLE COLABORATORY to implement the model and train the model.
+[Normal] 6.1 Google Colaboratory
+[Normal] Google Colaboratory is a free online cloud-based Jupyter notebook environment that allows us to train our machine learning and deep learning models on the CPU‘s, GPU‘s and TPU‘s.
+[Heading 4] 6.2 Software Libraries
+[Normal] A software library is a suite of data and programming code that is used to develop software programs and applications. It is designed to assist both the programmer and the programming language compiler in building and executing software. A software library generally consists of prewritten code, classes, procedures, scripts, configuration data and more. Typically, a developer might manually add a software library to a program to achieve more functionality or to automate a process without writing code for it. For example, when developing a mathematical program or application, a developer may add a mathematics software library to the program to eliminate the need for writing complex functions. All of the available functions within a software library can just be called/used within the program body without defining them explicitly. Similarly, a compiler might automatically add a related software library to a program on run time.
+[Normal] For this project, numpy, pandas and keras software libraries are used to implement the layers for model.
+[Heading 5] 6.2.1 Numpy
+[Normal] NumPy, short for Numerical Python, is a fundamental library in Python used for numerical computing. It provides support for multidimensional arrays (ndarrays) and a vast collection of functions for performing mathematical operations on these arrays efficiently. NumPy's arrays are more efficient for storing and manipulating large datasets compared to Python lists.
+[Normal] The library offers functionalities for array creation, indexing, slicing, arithmetic operations, linear algebra, random number generation, file input/output, and more. With its optimized C and Fortran code implementations, NumPy enables fast numerical computations and seamless integration with other scientific Python libraries. It serves as the backbone for numerous scientific computing tasks, including data analysis, machine learning, signal processing, and simulations.
+[Heading 5] 6.2.2 Panda
+[Normal] Pandas is a Python library widely used for data manipulation and analysis. It provides easy-to-use data structures and functions for working with structured data, such as tabular data, time series, and more. The primary data structures in Pandas are Series and DataFrame.
+[List Paragraph] Series: A Series is a one-dimensional labeled array capable of holding any data type. It is similar to a NumPy array but with additional indexing capabilities. Series can be created from Python lists, arrays, or dictionaries.
+[List Paragraph] DataFrame: A DataFrame is a two-dimensional labeled data structure resembling a spreadsheet or SQL table. It consists of rows and columns, where each column can be of a different data type. DataFrames are highly flexible and can be thought of as a collection of Series objects sharing the same index.
+[Normal] 6.2.3 Keras
+[Normal] Keras is a deep learning API written in Python, running on top of the machine learning platform TensorFlow. It was developed with a focus on enabling fast experimentation. Being able to go from idea to result as fast as possible is key to doing good research.
+[List Paragraph] Simple - but not simplistic. Keras reduces developer cognitive load to free you to focus on the parts of the problem that really matter.
+[List Paragraph] Flexible - Keras adopts the principle of progressive disclosure of complexity: simple workflows should be  quick  and  easy,   while   arbitrarily  advanced   workflows  should  be possible via a clear path that builds upon what you've already learned.
+[List Paragraph] Powerful - Keras provides industry-strength performance and scalability: it is used by organizations and companies including NASA, YouTube, or Waymo.
+[Heading 4] 6.3 Layers Implementation Using Deep Learning
+[Heading 4] 1-D convolutional layer: A 1-D convolutional layer is a fundamental component of convolutional neural networks (CNNs) specifically designed to process one-dimensional data, such as signals, time series, or sequences. It operates by applying a set of learnable filters (also known as kernels) to the input data, performing a convolution operation along the time. A 1-D convolutional layer applies sliding convolutional filters to 1-D input. The layer convolves the input by moving the filters along the input and computing the dot product of the weights and the input, then adding a bias term.
+[Heading 4] Global Average Pooling layer: The Global Average Pooling (GAP) layer is a type of pooling layer commonly used in convolutional neural networks (CNNs), particularly in image classification tasks. It is often employed as an alternative to traditional fully connected layers at the end of the network architecture. Global Average Pooling allows for straightforward and robust CNN architecture. With the use of Global Pooling, we can implement generalizable models that are applicable to input images of any size. Global Pooling layers are directly used before dense layers.
+[Normal] Max Pooling layer: The Max Pooling layer is a type of pooling layer commonly used in convolutional neural networks (CNNs) to down sample the spatial dimensions of feature maps while retaining the most important information. It operates by dividing the input feature map into non-overlapping rectangular regions (usually with a pool size or kernel size) and taking the maximum value within each region.
+[Normal] Dense layer: A dense layer is a layer where each neuron is connected to every neuron in the previous layer.
+[Normal] Concatenation layer: A concatenation layer takes inputs and concatenates them along a specified dimension. The inputs must be the same size in all dimensions except the concatenation dimension.
+[Normal] CHAPTER 7
+[Normal] RESULTS AND DISCUSSION
+[Normal] CHAPTER 7
+[Normal] RESULTS AND DISCUSSION
+[Normal] This project explores the use of Machine Learning and Deep Learning techniques for ECG arrhythmia classification, aiming to improve the accuracy and efficiency of automated diagnosis. Traditional classification methods often struggle with feature extraction and generalization, leading to suboptimal performance. In this work, an ensemble-based approach and a CNN integrated with an Attention Mechanism and transformer encoder network (CAT Model) were implemented to enhance classification accuracy.
+[Normal] The results are analyzed in three stages:
+[Normal] Machine Learning Model Training – Individual ML models such as Random Forest, SVM, KNN, XGBoost, Logistic Regression, and Decision Tree were trained and evaluated on ECG datasets. Performance metrics, including accuracy, precision, recall, and F1-score, were analyzed.
+[Normal] Ensemble Learning Approach – To enhance performance, Random Forest was combined with other classifiers, leading to improved classification accuracy. Among the ensemble models, RF-XGBoost achieved the highest accuracy of 97%, demonstrating the advantage of combining multiple models for robust feature learning.
+[Normal] CNN with Attention Mechanism (CAT Network) – The proposed deep learning model integrated a CNN with an Attention Mechanism to improve feature extraction from ECG waveforms. The CAT Network outperformed all ML and ensemble models, achieving an accuracy of 99%, highlighting its superior ability to focus on critical ECG signal patterns and classify arrhythmias effectively.
+[Normal] 7.1 Arrhythmia Classification Using ML Models
+[Normal] The table-2 presents a comparative evaluation of various machine learning models for ECG classification, assessed using four key metrics: Accuracy, Precision, Recall, and F1-Score
+[Normal] Table 2 Performance Comparison of ML Models
+[Normal] Random Forest achieved the highest accuracy of 0.93, along with a strong precision and recall score, making it the most balanced and effective model among the listed classifiers.
+[Normal] Decision Tree followed closely with an accuracy of 0.89, indicating good performance but slightly less robust compared to Random Forest.
+[Normal] KNN attained an accuracy of 0.86, showing competitive performance with strong precision and recall values.
+[Normal] Logistic Regression performed the weakest, achieving only 0.57 accuracy, indicating limited effectiveness in this context.
+[Normal] XGBoost delivered an accuracy of 0.90, making it a strong contender with well-balanced metrics across all evaluation criteria.
+[Normal] SVM achieved an accuracy of 0.88, demonstrating reliable performance with stable precision and recall values.
+[Normal] Comparative Analysis of ML Models
+[Normal] Include a Bar Graph to visualize the comparative performance of each model across key metrics (Accuracy, Precision, Recall, and F1-Score).
+[Normal] Fig 7.1 presents a comparative analysis of various machine learning models, evaluating them using four metrics: Accuracy, Precision, Recall, and F1-Score. The models compared include Random Forest, Decision Tree, K-Nearest Neighbors (KNN), Logistic Regression, XGBoost, and Support Vector Machine (SVM). Random Forest and XGBoost demonstrate the highest overall performance across all metrics, showing consistently high Accuracy, Precision, Recall, and F1-Score. Decision Tree and SVM also perform well, maintaining balanced scores across all metrics. KNN exhibits moderate performance, with noticeable variations between metrics, particularly higher Recall and F1-Score. However, Logistic Regression shows the weakest performance, with significantly lower Accuracy and Recall, indicating its limitations in this scenario. The chart provides a clear visual representation of model effectiveness, making it easier to compare their strengths and weaknesses for model selection.
+[Normal] Fig 7.1 Comparative Analysis of ML Models
+[Normal] Performance Trends Across ML Models
+[Normal] The line chart (Fig 7.2) provides a visual representation of the performance trends across different machine learning models using four evaluation metrics: Accuracy, Precision, Recall, and F1-Score. The models assessed include Random Forest, Decision Tree, K-Nearest Neighbors (KNN), Logistic Regression, XGBoost, and Support Vector Machine (SVM). Random Forest and XGBoost exhibit the most consistent and highest performance across all metrics, demonstrating their robustness and reliability. Decision Tree and SVM also show stable and relatively high scores, with minimal variation between metrics. KNN maintains moderate performance, especially in Precision, while its Recall and F1-Score slightly lag. On the other hand, Logistic Regression underperforms significantly, with sharp declines in Recall and F1-Score, indicating poor model generalization. This comparative analysis helps in understanding which models offer the best balance of accuracy and predictive power, providing valuable insights for selecting the optimal model for specific applications.
+[Normal] Fig 7.2 Performance Trends Across ML Models
+[Normal] Metric Distribution Across ML Models
+[Normal] A Boxplot (Fig 7.3) is ideal to showcase the distribution and variability of performance metrics. This visualization highlights outliers, stability, and range differences in model performance.
+[Normal] Fig 7.3 Metric Distribution Across ML Models
+[Normal] 7.2 Arrhythmia Classification Using Ensemble Models
+[Normal] Table 3 presents the performance metrics of various ensemble models combining Random Forest (RF) with other classifiers such as K-Nearest Neighbors (KNN), Support Vector Machine (SVM), Decision Tree (DT), XGBoost, and Logistic Regression (LR). The evaluation metrics include Accuracy, Precision, Recall, and F1-Score, which are crucial indicators of model performance in ECG classification tasks.
+[Normal] Table 3 Performance Comparison of Ensemble Models
+[Normal] RF with XGBoost achieved the highest performance with 97% accuracy, precision, recall, and F1-score, indicating superior model effectiveness in distinguishing ECG patterns. RF with KNN followed closely with 96% across all metrics, showcasing its ability to effectively capture feature relationships in the data. RF with LR and RF with DT performed competitively, achieving 95% and 93% accuracy, respectively, while maintaining strong precision and recall values.RF with SVM exhibited comparatively lower performance with 87% in all metrics, suggesting potential limitations in handling complex ECG patterns.
+[Normal] Comparative Analysis of Ensemble Models
+[Normal] The bar chart (Fig 7.3) presents a comparative analysis of ensemble models, specifically combinations of Random Forest (RF) with other classifiers including K-Nearest Neighbors (KNN), Support Vector Machine (SVM), Decision Tree (DT), XGBoost, and Logistic Regression (LR). The models are evaluated using four performance metrics: Accuracy, Precision, Recall, and F1-Score. Among the combinations, RF+KNN and RF+XGBoost demonstrate the highest overall performance, achieving near-perfect scores across all metrics, indicating strong predictive capability and balanced performance. RF+DT and RF+LR also perform well, with consistently high Accuracy and Precision. However, the RF+SVM combination shows comparatively lower scores, particularly in Accuracy and Recall, suggesting challenges in capturing complex patterns. The clear visualization of metric variations aids in understanding the effectiveness of different ensemble strategies, highlighting RF+KNN and RF+XGBoost as the most effective choices for achieving robust classification results.
+[Normal] Fig 7.4 Comparative Analysis of Ensemble Models
+[Normal] Performance Trends Across Ensemble Models
+[Normal] The line chart (Fig 7.5) presents performance trends across various ensemble models, specifically combinations of Random Forest (RF) with other classifiers, including K-Nearest Neighbors (KNN), Support Vector Machine (SVM), Decision Tree (DT), XGBoost, and Logistic Regression (LR). The models are evaluated using four key metrics: Accuracy, Precision, Recall, and F1-Score. Among these combinations, RF+KNN and RF+XGBoost show the highest overall performance, maintaining consistently high scores across all metrics. RF+LR also performs well, although it slightly lags in Recall and F1-Score compared to RF+XGBoost. On the other hand, RF+SVM shows a notable dip in performance, particularly in Recall, leading to reduced F1-Score and overall accuracy. RF+DT achieves relatively balanced results, with a minor drop in Precision. The visual representation in the chart makes it evident that while RF+XGBoost and RF+KNN are the most reliable choices for classification tasks, RF+SVM may struggle with maintaining balanced performance.
+[Normal] Fig 7.5 Performance Trends Across Ensemble Models
+[Normal] Metric Distribution Across Ensemble Models
+[Normal] The box plot (Fig 7.6) illustrates the distribution of four key performance metrics Accuracy, Precision, Recall, and F1-Score across various ensemble models. Each box represents the interquartile range (IQR), capturing the middle 50% of the data, while the whiskers extend to indicate variability outside the IQR. Outliers are also evident, particularly in Recall and F1-Score, suggesting inconsistent model performance for some combinations. Precision displays the most stable and consistently high values, indicating that ensemble models generally perform well in minimizing false positives. Accuracy and F1-Score exhibit slight variability, though both remain within a high-performance range. Recall shows a wider spread, with lower values in some cases, indicating challenges in capturing all positive instances.
+[Normal] Fig 7.6 Metric Distribution Across Ensemble Models
+[Normal] 7.3 Arrhythmia Classification Using CATBoost Model
+[Normal] Model Summary of the Proposed CAT Network
+[Normal] The provided Fig 7.7 displays the layer-wise architecture details of a Convolution with Attention and Transformer (CAT) network used for ECG classification. The first table outlines the initial layers, starting with the input layer, which has an output shape of (128, 64) with no trainable parameters. Following this, the channel attention layer applies attention mechanisms with an output shape of (1, 128, 64) and 1,096 parameters, enhancing the network’s focus on relevant features across channels. The second table details the core convolutional and pooling layers. It begins with a Conv1D layer (16 filters) followed by MaxPooling1D, reducing the dimensionality. The subsequent Conv1D layers progressively increase the filter size to 32, 64, and 128, with MaxPooling1D layers applied after each convolution for further down-sampling. These layers exhibit a significant rise in trainable parameters, particularly the third Conv1D layer with 221,312 parameters, indicating its complexity in feature extraction. After the convolutional stack, a Flatten layer reshapes the output, followed by a Dense layer with 5 output nodes representing the classification classes. The final Dense layer contains 2,565 parameters, contributing to the network's decision-making process. Overall, the model's design balances feature extraction through convolutional layers and effective dimensionality reduction via pooling, while the attention mechanism further enhances relevant feature capture.
+[Normal] Fig 7.7 Model Summary of the Proposed CAT Network
+[Normal] Table 4 illustrates the performance metrics of the proposed Convolution, Attention, and Transformer (CAT) network for ECG classification. The model achieved exceptional results across all key evaluation metrics:
+[Normal] Table 4 Performance Comparison of CAT Boost Model
+[Normal] The CAT Network demonstrated superior performance compared to traditional ensemble models. Its 99% accuracy highlights its remarkable ability to effectively extract complex ECG features while maintaining a balanced trade-off between precision and recall. The integration of the attention mechanism significantly enhanced feature representation by dynamically focusing on the most informative segments of the ECG signal.
+[Normal] Confusion Matrix Analysis for Convolution with Attention Network (CAT)
+[Normal] The confusion matrix shown in Fig 7.8 represents the performance of the Convolution with Attention Network (CAT) on the ECG arrhythmia classification task. Each cell indicates the number of predictions made for the corresponding true class (rows) and predicted class (columns).
+[Normal] Fig 7.8 Confusion Matrix for CAT Network
+[Normal] Classification Report
+[Normal] The classification report (Fig 7.9) provides a detailed evaluation of the model's performance across five classes using key metrics: Precision, Recall, F1-Score, and Support. The model achieved an overall accuracy of 99%, indicating highly effective classification. Class 0.0, with the highest support of 18,076 samples, demonstrated a near-perfect performance with a Precision of 0.99, Recall of 1.00, and an F1-Score of 0.99. Class 4.0 also showed exceptional results with a Recall of 1.00 and an F1-Score of 0.99. Class 1.0 and Class 2.0 exhibited strong performance with F1-Scores of 0.92 and 0.97, respectively, though Class 1.0 had a slightly lower Recall at 0.89. Class 3.0, with the least support (171 samples), showed the lowest F1-Score of 0.82, reflecting a balance between Precision (0.82) and Recall (0.81). The macro average F1-Score of 0.94 highlights the model's consistent performance across all classes, while the weighted average F1-Score of 0.99 further confirms its robustness. Overall, the model's classification capability is exceptional, with minimal performance degradation across imbalanced classes.
+[Normal] Fig 7.9 Classification Report for CAT Network
+[Normal] Accuracy And Loss Curves
+[Normal] The accuracy and loss curves depicted in Figures 1 and 2 illustrate the training progress of the CAT Network over 30 epochs.
+[Normal] In Fig 7.10, the model's training accuracy steadily improves, reaching nearly 100%, while the test accuracy stabilizes at around 99%. This consistent performance on both the training and test datasets demonstrates the model's strong generalization ability.
+[Normal] In Fig 7.11, the training loss rapidly decreases in the initial epochs and gradually converges to a minimal value. The test loss follows a similar trend but maintains slightly higher values, indicating minimal overfitting. The stable gap between the two curves signifies a well-trained model that effectively avoids excessive variance.
+[Normal] Fig 7.10 Accuracy Curve for CAT Network
+[Normal] Fig 7.11 Loss Curve for CAT Network
+[Normal] Receiver Operating Characteristic (Roc) Curve
+[Normal] The ROC curve shown in Fig 7.12 provides a visual representation of the model's classification performance across different classes. The True Positive Rate (TPR) is plotted against the False Positive Rate (FPR) for each class, with the diagonal dashed line representing random chance (AUC = 0.50). The model demonstrates outstanding performance, with Area Under the Curve (AUC) values close to or equal to 1.00 for all classes. Specifically, Classes 0, 2, and 4 achieved perfect AUC scores of 1.00, indicating flawless discrimination between positive and negative instances. Classes 1 and 3 also performed exceptionally well, with AUC values of 0.99, signifying minimal
+[Normal] Fig 7.12 ROC Curve
+[Normal] misclassifications. The steep curves with rapid ascent to a TPR of 1.0 suggest the model's high sensitivity and specificity.
+[Normal] Overall Performance Comparison of ML Models, Ensemble Models and CAT Network
+[Normal] Table 5 provides an overall performance comparison of Machine Learning (ML) models, Ensemble models, and the Convolution with Attention and Transformer (CAT) network for ECG classification. Random Forest, a traditional ML model, achieved an accuracy of 0.93 with a precision, recall, and F1-score of 0.94, reflecting its strong classification capabilities. The ensemble model, combining Random Forest with XGBoost, demonstrated significant improvement with an accuracy of 0.97 and a balanced precision, recall, and F1-score of 0.97, showcasing the advantages of ensemble learning in enhancing model robustness. However, the CAT network outperformed both approaches, achieving an exceptional accuracy of 0.99 along with a precision of 0.97, recall of 0.99, and an F1-score of 0.99. This remarkable performance indicates the effectiveness of incorporating convolutional, attention, and transformer mechanisms for capturing intricate ECG patterns, making the CAT network a highly reliable choice for ECG classification tasks.
+[Normal] Table 5: Overall Performance Comparison
+[Normal] CHAPTER 8
+[Normal] CONCLUSION AND FUTURE SCOPE
+[Normal] CHAPTER 8
+[Normal] CONCLUSION AND FUTURE SCOPE
+[Normal] 8.1 CONCLUSION
+[Normal] This project demonstrated that ensemble models significantly enhance ECG arrhythmia classification compared to individual classifiers. Among the ensemble approaches, Random Forest (RF) with XGBoost achieved the highest accuracy of 97%, showcasing its robustness in identifying complex ECG patterns. RF with Logistic Regression (LR) and RF with K-Nearest Neighbors (KNN) also performed well.
+[Normal] However, the proposed CAT Network outperformed all other models, achieving an exceptional accuracy of 99% on the MIT-BIH dataset. This superior performance is attributed to its advanced feature extraction using convolutional layers and attention mechanisms, effectively capturing intricate temporal dependencies and reducing noise.
+[Normal] These findings highlight the CAT Network's potential as a reliable solution for ECG arrhythmia classification, making it highly suitable for real-world medical applications. Its demonstrated accuracy and reliability mark a significant advancement toward enhancing automated diagnosis and improving patient outcomes.
+[Normal] 8.2 FUTURE SCOPE
+[Normal] The future scope of this work involves further enhancing the CAT Network by incorporating larger and more diverse ECG datasets to ensure better generalization across various patient populations. Additionally, exploring the integration of real-time ECG monitoring systems with the CAT Network can facilitate early diagnosis and timely medical intervention. Further research can also investigate the use of federated learning to maintain data privacy while improving model accuracy across decentralized healthcare institutions. Additionally, refining the attention mechanisms and optimizing computational efficiency can enable the deployment of the CAT Network on edge devices for continuous patient monitoring. Collaborative studies with medical professionals will further validate the model's clinical reliability, contributing to the advancement of AI-driven cardiac healthcare solutions.
+[Normal] CHAPTER 9
+[Normal] REFERENCES
+[Normal] CHAPTER 9
+[Normal] REFERENCES
+[List Paragraph] S. Bhattacharyya, S. Majumder, P. Debnath and M. Chanda, "Arrhythmic Heartbeat Classification Using Ensemble of Random Forest and Support Vector Machine Algorithm," in IEEE Transactions on Artificial Intelligence, vol. 2, no. 3, pp. 260-268, June 2021, doi: 10.1109/TAI.2021.3083689.
+[List Paragraph] T. Subba and T. Chingtham, "Comparative Analysis of Machine Learning Algorithms With Advanced Feature Extraction for ECG Signal Classification," in IEEE Access, vol. 12, pp. 57727-57740, 2024, doi: 10.1109/ACCESS.2024.3387041.
+[List Paragraph] Guohua Fu, Jianwei Zheng, Islam Abudayyeh, Chizobam Ani, CyrilRakovski, Louis Ehwerhemuepha, Hongxia Lu, Yongjuan Guo, ShenglinLiu, Huimin Chu, and Bing Yang. Cardiogpt: An ecg interpretation gen-eration model. IEEE Access, 12:50254–50264, 2024.
+[List Paragraph] Neenu Sharma, Ramesh Kumar Sunkaria, and Amandeep Kaur. Electro-cardiogram heartbeat classification using machine learning and ensemble convolutional neural network-bidirectional long short-term memory technique. IEEE Transactions on Artificial Intelligence, 5(6):2816–2827, 2024.
+[List Paragraph] Prateek Singh and Ambalika Sharma. Interpretation and classification of arrhythmia using deep convolutional network.IEEE Transactions on Instrumentation and Measurement, 71:1–12, 2022.
+[List Paragraph] Diaa Salama AbdElminaam, Andrew Gamal Fahmy, Youssef Mohamed Ali,Omar Ahmed Diaa El-Din, Mahmoud Heidar, et al. Deepecg: Building an efficient framework for automatic arrhythmia classification model. In 2022 2nd International Mobile, Intelligent, and Ubiquitous Computing Conference (MIUCC), pages 203–209. IEEE, 2022.
+[List Paragraph] Mohammed B Abubaker and Bilal Babayigit. Detection of cardiovascular diseases in ecg images using machine learning and deep learning methods.IEEE transactions on artificial intelligence, 4(2):373–382, 2022.
+[List Paragraph] Shreya Bhattacharyya, Souvik Majumder, Papiya Debnath, and Manash Chanda. Arrhythmic heartbeat classification using ensemble of random forest and support vector machine algorithm. IEEE Transactions on Artificial Intelligence, 2(3):260–268, 2021.
+[List Paragraph] Shreya Bhattacharyya, Souvik Majumder, Papiya Debnath, and Manash Chanda. Arrhythmic heartbeat classification using ensemble of random forest and support vector machine algorithm. IEEE Transactions on Artificial Intelligence, 2(3):260–268, 2021.
+[List Paragraph] C. Kreatsoulas and S. S. Anand, “The impact of social determinants on cardiovascular disease,” Can. J. Cardiol., vol. 26, pp. 8C–13C, 2010.
+[List Paragraph] R. Joshi, S. Jan, Y. Wu, and S. MacMahon, “Global inequalities in access to cardiovascular health care: Our greatest challenge,” J. Amer. College Cardiol., vol. 52, no. 23, pp. 1817–1825, 2008.
+[List Paragraph] Testing and Reporting Performance Results of Cardiac Rhythm and ST Segment Measurement Algorithms, ANSI/AAMIEC57. Arlington, VA, USA: Assoc. Advancement Med. Instrum., 2012.
+[List Paragraph] G. B. Moody and R. G. Mark, “The impact of the MIT-BIH arrhythmia database,” IEEE Eng. Med. Biol. Mag., vol. 20, no. 3, pp. 45–50, May/Jun. 2001.
+[List Paragraph] A.L. Goldberger et al., “PhysioBank, physiotoolkit, and physionet: Components of a new research resource for complex physiologic signals,” Circulation, vol. 101, no. 23, pp. e215–e220, 2000.
+[List Paragraph] P. de Chazal, M. O’Dwyer, and R. B. Reilly, “Automatic classification of heartbeats using ECG morphology and heartbeat interval features,” IEEE Trans. Biomed. Eng., vol. 51, no. 7, pp. 1196–1206, Jul. 2004.
+[List Paragraph] A.Christov, G. Gomez-Herrero, V. Krasteva, I. Jekova, A. Gotchev, and K. Egiazarian, “Comparative study of morphological and time-frequency ECG descriptors for heartbeat classification,” Med. Eng. Phys., vol. 28, no. 9, pp. 876–887, 2006.
+[List Paragraph] M. Llamedo and J. P. Martínez, “Heartbeat classification using feature selection driven by database generalization criteria,” IEEE Trans. Biomed. Eng., vol. 58, no. 3, pp. 616–625, Mar. 2011.
+[List Paragraph] C. Ye, B. V. K. V. Kumar, and M. T. Coimbra, “Heartbeat classification using morphological and dynamic features of ECG signals,” IEEE Trans. Biomed. Eng., vol. 59, no. 10, pp. 2930–2941, Oct. 2012.
+[List Paragraph] C. Ye, B. V. K. V. Kumar, and M. T. Coimbra, “An automatic subjectadaptable heartbeat classifier based on multiview learning,” IEEE J. Biomed. Health Inform., vol. 20, no. 6, pp. 1485–1492, Nov. 2016.
+[List Paragraph] Z. Zhang, J. Dong, X. Luo, K.-S. Choi, and X. Wu, “Heartbeat classification using disease-specific feature selection,” Comput. Biol. Med., vol. 46, pp. 79–89, 2014.
+[List Paragraph] C. C. Lin and C. M. Yang, “Heartbeat classification using normalized RR intervals and wavelet features,” in Proc. Int. Symp. Comput., Consum. Control, Taichung, Taiwan, 2014, pp. 650–653.
+[List Paragraph] P. Li et al., “High-performance personalized heartbeat classification model for long-term ECG signal,” IEEE Trans. Biomed. Eng., vol. 64, no. 1, pp. 78–86, Jan. 2017.
+[List Paragraph] Naik, Shradha, Saswati Debnath, and Vijin Justin. "A review of arrhythmia classification with artificial intelligence techniques: Deep vs machine learning." 2021 2nd International Conference for Emerging Technology (INCET). IEEE, 2021.
+[List Paragraph] Naik, S., Debnath, S., & Justin, V. (2021, May). A review of arrhythmia classification with artificial intelligence techniques: Deep vs machine learning. In 2021 2nd International Conference for Emerging Technology (INCET) (pp. 1-14). IEEE.
+[List Paragraph] Naik, Shradha, Saswati Debnath, and Vijin Justin. "A review of arrhythmia classification with artificial intelligence techniques: Deep vs machine learning." In 2021 2nd International Conference for Emerging Technology (INCET), pp. 1-14. IEEE, 2021.
+[List Paragraph] Naik, S., Debnath, S. and Justin, V., 2021, May. A review of arrhythmia classification with artificial intelligence techniques: Deep vs machine learning. In 2021 2nd International Conference for Emerging Technology (INCET) (pp. 1-14). IEEE.
+[List Paragraph] Naik S, Debnath S, Justin V. A review of arrhythmia classification with artificial intelligence techniques: Deep vs machine learning. In2021 2nd International Conference for Emerging Technology (INCET) 2021 May 21 (pp. 1-14). IEEE.
+[List Paragraph] Rajkumar, A., M. Ganesan, and R. Lavanya. "Arrhythmia classification on ECG using Deep Learning." 2019 5th international conference on advanced computing & communication systems (ICACCS). IEEE, 2019.
+[List Paragraph] Rajkumar, A., Ganesan, M., & Lavanya, R. (2019, March). Arrhythmia classification on ECG using Deep Learning. In 2019 5th international conference on advanced computing & communication systems (ICACCS) (pp. 365-369). IEEE.
+[List Paragraph] Rajkumar, A., M. Ganesan, and R. Lavanya. "Arrhythmia classification on ECG using Deep Learning." In 2019 5th international conference on advanced computing & communication systems (ICACCS), pp. 365-369. IEEE, 2019.
+[List Paragraph] Rajkumar, A., Ganesan, M. and Lavanya, R., 2019, March. Arrhythmia classification on ECG using Deep Learning. In 2019 5th international conference on advanced computing & communication systems (ICACCS) (pp. 365-369). IEEE.
+[List Paragraph] Rajkumar A, Ganesan M, Lavanya R. Arrhythmia classification on ECG using Deep Learning. In2019 5th international conference on advanced computing & communication systems (ICACCS) 2019 Mar 15 (pp. 365-369). IEEE.
+[List Paragraph] Duan, Ran, Xiaodong He, and Zhuoran Ouyang. "MADNN: A multi-scale attention deep neural network for arrhythmia classification." 2020 Computing in Cardiology. IEEE, 2020.
+[List Paragraph] Duan, R., He, X., & Ouyang, Z. (2020, September). MADNN: A multi-scale attention deep neural network for arrhythmia classification. In 2020 Computing in Cardiology (pp. 1-4). IEEE.
+[List Paragraph] Duan, Ran, Xiaodong He, and Zhuoran Ouyang. "MADNN: A multi-scale attention deep neural network for arrhythmia classification." In 2020 Computing in Cardiology, pp. 1-4. IEEE, 2020.
+[List Paragraph] Duan, R., He, X. and Ouyang, Z., 2020, September. MADNN: A multi-scale attention deep neural network for arrhythmia classification. In 2020 Computing in Cardiology (pp. 1-4). IEEE.
+[List Paragraph] Duan R, He X, Ouyang Z. MADNN: A multi-scale attention deep neural network for arrhythmia classification. In2020 Computing in Cardiology 2020 Sep 13 (pp. 1-4). IEEE.
+[List Paragraph] Wang, Ruxin, Jianping Fan, and Ye Li. "Deep multi-scale fusion neural network for multi-class arrhythmia detection." IEEE journal of biomedical and health informatics 24.9 (2020): 2461-2472.
+[List Paragraph] Wang, R., Fan, J., & Li, Y. (2020). Deep multi-scale fusion neural network for multi-class arrhythmia detection. IEEE journal of biomedical and health informatics, 24(9), 2461-2472.
+[List Paragraph] Wang, Ruxin, Jianping Fan, and Ye Li. "Deep multi-scale fusion neural network for multi-class arrhythmia detection." IEEE journal of biomedical and health informatics 24, no. 9 (2020): 2461-2472.
+[List Paragraph] Wang, R., Fan, J. and Li, Y., 2020. Deep multi-scale fusion neural network for multi-class arrhythmia detection. IEEE journal of biomedical and health informatics, 24(9), pp.2461-2472.
+[List Paragraph] Wang R, Fan J, Li Y. Deep multi-scale fusion neural network for multi-class arrhythmia detection. IEEE journal of biomedical and health informatics. 2020 Apr 13;24(9):2461-72.

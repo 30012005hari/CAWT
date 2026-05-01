@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvSplashTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CAWT"
+            android:textColor="@color/accent"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.15" />
+
+        <View
+            android:id="@+id/splashLine"
+            android:layout_width="80dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/accent" />
+
+        <TextView
+            android:id="@+id/tvSplashSub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="ECG Arrhythmia Classifier"
+            android:textColor="@color/text_secondary"
+            android:textSize="15sp"
+            android:fontFamily="sans-serif"
+            android:letterSpacing="0.05" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvSplashVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="48dp"
+        android:text="Cross-Attentive Wavelet Transformer"
+        android:textColor="@color/text_hint"
+        android:textSize="11sp"
+        android:fontFamily="sans-serif" />
+
+</FrameLayout>

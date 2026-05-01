@@ -1,0 +1,40 @@
+# Node
+node_modules/
+dist/
+coverage/
+package-lock.json
+
+# Build outputs
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+~$*
+
+# Environment
+.env*
+!.env.example
+
+# Logs
+*.log
+
+# Gradle / Android
+.gradle/
+*.iml
+local.properties
+ECGClassifier/.gradle/
+ECGClassifier/build/
+ECGClassifier/app/build/
+
+# Large model files (use Git LFS or share separately)
+*.pth
+*.pt
+
+# Backup files
+*.wbk
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

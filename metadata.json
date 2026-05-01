@@ -1,0 +1,5 @@
+{
+  "name": "ECG Analysis Dashboard",
+  "description": "A dashboard for analyzing ECG signals using a deep learning model (CAWT).",
+  "requestFramePermissions": []
+}
